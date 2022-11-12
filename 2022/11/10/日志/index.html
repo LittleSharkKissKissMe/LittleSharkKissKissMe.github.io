@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/">
-  <title>归档</title>
+  <title>日志</title>
   
     
       <meta 
         property="og:title" 
-        content="归档">
+        content="日志">
     
     
       <meta 
         property="og:url" 
-        content="http://example.com/archives/index.html">
+        content="http://example.com/2022/11/10/%E6%97%A5%E5%BF%97/index.html">
     
     
       <meta 
@@ -36,6 +36,22 @@
         content="/images/Gus.jpg">
     
     
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-11-10">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-11-12">
+      <meta 
+        property="og:article:author" 
+        content="theme-kaze">
+      
+        
+      
     
   
   
@@ -52,6 +68,8 @@
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
   
   
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
   
   <script>
     function loadScript(url, cb) {
@@ -285,6 +303,18 @@
                <div class="sticky-tablet">
   
   
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BA%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98"><span class="toc-text">以下记录搭建时遇到的各种问题</span></a></li></ol>
+      </div>
+    </article>
+  
   
   <article class="card card-content categories-widget">
     <div class="categories-card">
@@ -315,111 +345,133 @@
   </article>
   
   
-    <article class="card card-content widescreen-archive archive-widget">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">3</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
-  
 </div>
             </aside>
             <main class="main-column">
               
-<div class="card card-content">
-  <h1 class="widget-title">归档</h1>
-</div>
-<div class="archive-timeline">
-  
-  
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      日志
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-11-10T14:24:33.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-11-10</span>
+    </time>
     
-      <div class="archive-timeline-tag"><span>2022</span></div>
-      
     
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2022-11-12</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2022/11/12/%E6%9C%89%E5%85%B3%E4%B8%BB%E9%A2%98%E7%9A%84%E6%9B%B4%E6%94%B9/"
-              class="archive-timeline-post-item">
-              有关主题的更改
-            </a>
-          </div>
-        </div>
+      <span class="dot"></span>
+      <span>182 字</span>
+    
+  </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="以下记录搭建时遇到的各种问题"><a href="#以下记录搭建时遇到的各种问题" class="headerlink" title="以下记录搭建时遇到的各种问题"></a>以下记录搭建时遇到的各种问题</h2><p>  1.npm卸载不干净</p>
+<p>  在使用cnpm时提示如下图错误，自然地想到更新npm但是失败了</p>
+<p>  直接卸载重装</p>
+<p>  但是在控制面板卸完nodejs之后，检查发现npm仍然存在</p>
+<p>  我原本以为nodejs和npm是绑定在一起的，上网查了以后发现并不是这样</p>
+<p>  实际上npm有自己的文件夹</p>
+<p>  找到并删除node_modules和.npminstall_tarball，重新安装npm</p>
+<p>  检查后npm果然消失了</p>
+<p>  重新下载，更新完npm，输入npm install -g cnpm –registry&#x3D;<a target="_blank" rel="noopener" href="https://registry.npmmirror.com下载cnpm/">https://registry.npmmirror.com下载cnpm</a></p>
+<p>  此时输入cnpm，终端能给出相应的版本信息</p>
+<p>  然后按教程继续做博客</p>
+<hr>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-warning copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            theme-kaze
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="http://example.com/2022/11/10/%E6%97%A5%E5%BF%97/">
+            http://example.com/2022/11/10/%E6%97%A5%E5%BF%97/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
       </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2022/11/12/%E6%9C%89%E5%85%B3%E4%B8%BB%E9%A2%98%E7%9A%84%E6%9B%B4%E6%94%B9/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">有关主题的更改 </div>
+          
+        </div>
+      </a>
     </div>
   
-    
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2022-11-10</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2022/11/10/%E6%97%A5%E5%BF%97/"
-              class="archive-timeline-post-item">
-              日志
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
   
-    
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2022-11-10</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2022/11/10/hello-world/"
-              class="archive-timeline-post-item">
-              Hello World
-            </a>
-          </div>
+    <div class="nav-item-next">
+      <a 
+        href="/2022/11/10/hello-world/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">Hello World </div>
+          
         </div>
-      </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
     </div>
   
 </div>
 
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BA%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98"><span class="toc-text">以下记录搭建时遇到的各种问题</span></a></li></ol>
+</div>
             </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BA%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98"><span class="toc-text">以下记录搭建时遇到的各种问题</span></a></li></ol>
+    </article>
   
   
   <article class="card card-content">
@@ -451,44 +503,6 @@
 </div>
   </article>
   
-  
-    <article class="card card-content">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">3</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
   
 </div>
             </aside>
@@ -591,6 +605,36 @@
 </a> 
      
      
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
      
      
     <script src="/js/main.js"></script> 

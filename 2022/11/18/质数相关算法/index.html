@@ -419,7 +419,7 @@
     
     
       <span class="dot"></span>
-      <span>821 字</span>
+      <span>826 字</span>
     
   </div>
   
@@ -447,12 +447,25 @@
     id="section" 
     class="post-content">
     <h2 id="质数问题"><a href="#质数问题" class="headerlink" title="质数问题"></a>质数问题</h2><p>质数问题的通病是跑得太慢，经常会出现时间超限的情况<br>下面介绍几种相对高效的方法</p>
-<p>1.一般方法</p>
-<p>#include<iostream><br>using namespace std;<br>bool isComp[100000005];<br>int main ()<br>{<br>    int n,ans&#x3D;0;<br>    cin&gt;&gt;n;<br>    isComp[1]&#x3D;1;  &#x2F;&#x2F;1的特判<br>    for(int i&#x3D;2;i<em>i&lt;&#x3D;n;i++)<br>    {<br>        if(isComp[i]&#x3D;&#x3D;0)<br>            for(int j&#x3D;i</em>i;j&lt;&#x3D;n;j+&#x3D;i)<br>            	isComp[j]&#x3D;1;<br>    }<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        if(isComp[i]&#x3D;&#x3D;0)<br>            ans++;<br>    }<br>    cout&lt;&lt;ans&lt;&lt;endl;<br>    return 0;<br>}</p>
+<p>1.一般方法<br>核心代码：<br>    #include<iostream><br>    using namespace std;<br>    bool isComp[100000005];<br>    int main (){<br>        int n,ans&#x3D;0;<br>        cin&gt;&gt;n;<br>        isComp[1]&#x3D;1;  &#x2F;&#x2F;1的特判</p>
+<pre><code>    for(int i=2;i*i&lt;=n;i++)&#123; 
+        if(isComp[i]==0)
+            for(int j=i*i;j&lt;=n;j+=i)
+        	    isComp[j]=1;
+    &#125;
+
+    for(int i=1;i&lt;=n;i++)&#123;
+        if(isComp[i]==0)
+            ans++;
+    &#125;
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;  
+&#125;
+</code></pre>
 <p>（来自洛谷题解.luoyoucheng）</p>
 <p>也就是从2开始把它自身的所有倍数标记为非质数，那么剩下的就是质数</p>
 <p>2.埃式筛法</p>
-<p>核心代码：<br>    bitset<maxn>pri;&#x2F;&#x2F;预处理，0为素数，1为合数</p>
+<p>核心代码：<br>    bitset &lt; maxn &gt; pri;&#x2F;&#x2F;预处理，0为素数，1为合数</p>
 <pre><code>for(int i=2; i&lt;=N/i; ++i)&#123;  //从根号n开始筛选
     if(!pri[i])  //如果i是质数
         for(int j=i*i; j&lt;=N; j+=i) pri[j]=1;  //从它的平方开始+i筛选
@@ -469,8 +482,25 @@
 <p>只需证明x的最小质因数比y小，也就是证明只有这种情况下不会提前break</p>
 <p>非常容易证，因为y是整个数的最小质因数，所以肯定是最小的，或者至少和x一样小</p>
 <p>证明完毕，虽然根本没用（</p>
-<p>记住模板得了：<br>#include&lt;bits&#x2F;stdc++.h&gt;<br>#define maxb 1000000<br>using namespace std;<br>bool pan[100000100];  &#x2F;&#x2F;判断是不是素数的数组<br>int prime[1000000],num,n,m;  &#x2F;&#x2F;prime数组存得到的质数，从小到大存</p>
-<p>void su(){<br>    memset(pan,true,sizeof(pan));<br>    pan[0]&#x3D;false;<br>    pan[1]&#x3D;false;<br>    for(int i&#x3D;2;i&lt;&#x3D;n;i++){<br>        if(pan[i]){  &#x2F;&#x2F;如果是素数，把它存到数组里，同时个数+1<br>            prime[++num]&#x3D;i;<br>        }<br>        for(int j&#x3D;1;j&lt;&#x3D;num;j++){<br>            pan[i*prime[j]]&#x3D;false;<br>            if(i%prime[j]&#x3D;&#x3D;0){  &#x2F;&#x2F;算法的核心<br>                break;<br>            }<br>        }<br>    }<br>}</p>
+<p>记住模板得了：<br>核心代码：<br>    #include&lt;bits&#x2F;stdc++.h&gt;<br>    #define maxb 1000000<br>    using namespace std;<br>    bool pan[100000100];  &#x2F;&#x2F;判断是不是素数的数组<br>    int prime[1000000],num,n,m;  &#x2F;&#x2F;prime数组存得到的质数，从小到大存</p>
+<pre><code>void su()&#123;
+    memset(pan,true,sizeof(pan));
+    pan[0]=false;
+    pan[1]=false;
+    for(int i=2;i&lt;=n;i++)&#123;
+        if(pan[i])&#123;  //如果是素数，把它存到数组里，同时个数+1
+            prime[++num]=i;
+        &#125;
+
+        for(int j=1;j&lt;=num;j++)&#123;
+            pan[i*prime[j]]=false;
+            if(i%prime[j]==0)&#123;  //算法的核心
+                break;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
 <p>（参考<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/hahahage/ou-la-shai-fa%EF%BC%89">https://www.luogu.com.cn/blog/hahahage/ou-la-shai-fa）</a></p>
 <hr>
 

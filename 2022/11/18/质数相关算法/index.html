@@ -18,7 +18,7 @@
   <link 
     rel="icon" 
     href="/">
-  <title>标签</title>
+  <title>质数相关算法</title>
   <style type="text/css">
     .fullscreenvideo {
         position: absolute;
@@ -59,12 +59,12 @@
     
       <meta 
         property="og:title" 
-        content="标签">
+        content="质数相关算法">
     
     
       <meta 
         property="og:url" 
-        content="http://example.com/tags/index.html">
+        content="http://example.com/2022/11/18/%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/index.html">
     
     
       <meta 
@@ -72,6 +72,26 @@
         content="/images/Gus.jpg">
     
     
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-11-18">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-11-18">
+      <meta 
+        property="og:article:author" 
+        content="风月无霰">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="算法：质数">
+        
+      
     
   
   
@@ -88,6 +108,8 @@
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
   
   
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
   
   <script>
     function loadScript(url, cb) {
@@ -328,6 +350,18 @@
                <div class="sticky-tablet">
   
   
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A8%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-text">质数问题</span></a></li></ol>
+      </div>
+    </article>
+  
   
   <article class="card card-content categories-widget">
     <div class="categories-card">
@@ -364,93 +398,153 @@
   </article>
   
   
-    <article class="card card-content widescreen-archive archive-widget">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">7</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
-  
 </div>
             </aside>
             <main class="main-column">
               
-
-<div class="card card-content">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      质数相关算法
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-11-18T06:18:46.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-11-18</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>821 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E7%AE%97%E6%B3%95%EF%BC%9A%E8%B4%A8%E6%95%B0/" 
+            class="post-meta-link">
+            算法：质数
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
   <div 
-    class="tags-page-title" 
-    style="margin-bottom: 0.6rem">
-    标签
+    id="section" 
+    class="post-content">
+    <h2 id="质数问题"><a href="#质数问题" class="headerlink" title="质数问题"></a>质数问题</h2><p>质数问题的通病是跑得太慢，经常会出现时间超限的情况<br>下面介绍几种相对高效的方法</p>
+<p>1.一般方法</p>
+<p>#include<iostream><br>using namespace std;<br>bool isComp[100000005];<br>int main ()<br>{<br>    int n,ans&#x3D;0;<br>    cin&gt;&gt;n;<br>    isComp[1]&#x3D;1;  &#x2F;&#x2F;1的特判<br>    for(int i&#x3D;2;i<em>i&lt;&#x3D;n;i++)<br>    {<br>        if(isComp[i]&#x3D;&#x3D;0)<br>            for(int j&#x3D;i</em>i;j&lt;&#x3D;n;j+&#x3D;i)<br>            	isComp[j]&#x3D;1;<br>    }<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        if(isComp[i]&#x3D;&#x3D;0)<br>            ans++;<br>    }<br>    cout&lt;&lt;ans&lt;&lt;endl;<br>    return 0;<br>}</p>
+<p>（来自洛谷题解.luoyoucheng）</p>
+<p>也就是从2开始把它自身的所有倍数标记为非质数，那么剩下的就是质数</p>
+<p>2.埃式筛法</p>
+<p>核心代码：<br>    bitset<maxn>pri;&#x2F;&#x2F;预处理，0为素数，1为合数</p>
+<pre><code>for(int i=2; i&lt;=N/i; ++i)&#123;  //从根号n开始筛选
+    if(!pri[i])  //如果i是质数
+        for(int j=i*i; j&lt;=N; j+=i) pri[j]=1;  //从它的平方开始+i筛选
+&#125;
+</code></pre>
+<p>（来自BV1hR4y1u7e1）</p>
+<p>3.欧拉筛法</p>
+<p>优化了埃式筛法中重复筛选的部分，复杂度接近线性</p>
+<p>相比上面的算法，欧拉筛法理解起来没那么容易<br>首先，它从2到n（i）遍历，对于遍历的每个数，假如是素数，就把它加入到素数表<br>接下执行子循环，从1到已知素数的个数（j）遍历，把所有 i和已知素数（假设为a）的乘积 筛掉<br>然后在这个子循环里，关键的下一句话是：如果i是已知素数（a）的倍数，退出子循环</p>
+<p>这是为什么？<br>这句话的作用，是保证每个合数只被筛一遍，即防止重复筛</p>
+<p>举个例子，比如说12（2<em>2</em>3）<br>12&#x3D;4<em>3<br>12&#x3D;6</em>2<br>当i&#x3D;4时，12会被4<em>3筛掉，关键语句不触发，因为4不是3的倍数<br>当i&#x3D;6时则不会被6</em>2筛掉。因为6是2的倍数，关键语句执行，直接退出了</p>
+<p>再举个例子，30（2<em>3</em>5）<br>30&#x3D;6<em>5   （6包含2，提前break）<br>30&#x3D;10</em>3   (10包含2，提前break)<br>30&#x3D;15*2   (15最小包含3，但是3在2（另一个因数）后面，所以先筛了30再break)</p>
+<p>不难发现，起筛选作用的i是这个合数 最大的 非素数因数（假设为x）<br>这里是15<br>另一个因数就是这个数的最小质因数（y）<br>这里是2</p>
+<p>只需证明x的最小质因数比y小，也就是证明只有这种情况下不会提前break</p>
+<p>非常容易证，因为y是整个数的最小质因数，所以肯定是最小的，或者至少和x一样小</p>
+<p>证明完毕，虽然根本没用（</p>
+<p>记住模板得了：<br>#include&lt;bits&#x2F;stdc++.h&gt;<br>#define maxb 1000000<br>using namespace std;<br>bool pan[100000100];  &#x2F;&#x2F;判断是不是素数的数组<br>int prime[1000000],num,n,m;  &#x2F;&#x2F;prime数组存得到的质数，从小到大存</p>
+<p>void su(){<br>    memset(pan,true,sizeof(pan));<br>    pan[0]&#x3D;false;<br>    pan[1]&#x3D;false;<br>    for(int i&#x3D;2;i&lt;&#x3D;n;i++){<br>        if(pan[i]){  &#x2F;&#x2F;如果是素数，把它存到数组里，同时个数+1<br>            prime[++num]&#x3D;i;<br>        }<br>        for(int j&#x3D;1;j&lt;&#x3D;num;j++){<br>            pan[i*prime[j]]&#x3D;false;<br>            if(i%prime[j]&#x3D;&#x3D;0){  &#x2F;&#x2F;算法的核心<br>                break;<br>            }<br>        }<br>    }<br>}</p>
+<p>（参考<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/hahahage/ou-la-shai-fa%EF%BC%89">https://www.luogu.com.cn/blog/hahahage/ou-la-shai-fa）</a></p>
+<hr>
+
   </div>
   <div>
-    共计&nbsp;1&nbsp;个标签
+    
+      <div 
+        class="post-note note-warning copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            风月无霰
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="http://example.com/2022/11/18/%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/">
+            http://example.com/2022/11/18/%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
+      </div>
+    
   </div>
-</div>
-<div class="card card-content">
-  <div class="tags-card">
-    <div class="tags-list">
-      
-        <a 
-          href="/tags/%E7%AE%97%E6%B3%95%EF%BC%9A%E8%B4%A8%E6%95%B0/" 
-          title="算法：质数">
-          <div class="tags-list-item">算法：质数</div>
-        </a>
-      
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/11/16/%E5%85%B3%E4%BA%8E%E5%A4%9A%E7%BB%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%9A%84%E5%88%A4%E5%AE%9A/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">关于多组输入输出的判定 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
     </div>
-  </div>
+  
 </div>
 
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A8%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-text">质数问题</span></a></li></ol>
+</div>
             </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A8%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-text">质数问题</span></a></li></ol>
+    </article>
   
   
   <article class="card card-content">
@@ -487,60 +581,6 @@
 </div>
   </article>
   
-  
-    <article class="card card-content">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">7</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
   
 </div>
             </aside>
@@ -643,6 +683,36 @@
 </a> 
      
      
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
      
      
     <script src="/js/main.js"></script> 

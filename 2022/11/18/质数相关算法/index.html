@@ -425,7 +425,7 @@
     
     
       <span class="dot"></span>
-      <span>826 字</span>
+      <span>824 字</span>
     
   </div>
   
@@ -453,57 +453,17 @@
     id="section" 
     class="post-content">
     <h2 id="质数问题"><a href="#质数问题" class="headerlink" title="质数问题"></a>质数问题</h2><p>质数问题的通病是跑得太慢，经常会出现时间超限的情况<br>下面介绍几种相对高效的方法</p>
-<p>1.一般方法<br>核心代码：<br>    #include<iostream></p>
-<pre><code>using namespace std;
-
-bool isComp[100000005];
-
-int main ()&#123;
-
-    int n,ans=0;
-
-    cin&gt;&gt;n;
-
-    isComp[1]=1;  //1的特判
+<p>1.一般方法<br>核心代码：</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">bool</span> isComp[<span class="number">100000005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span></span>&#123;</span><br><span class="line"> <span class="type">int</span> n,ans=<span class="number">0</span>;</span><br><span class="line"> cin&gt;&gt;n;</span><br><span class="line"></span><br><span class="line"> isComp[<span class="number">1</span>]=<span class="number">1</span>;  <span class="comment">//1的特判</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i*i&lt;=n;i++)&#123; </span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span>(isComp[i]==<span class="number">0</span>)</span><br><span class="line">         <span class="keyword">for</span>(<span class="type">int</span> j=i*i;j&lt;=n;j+=i)</span><br><span class="line">     	    isComp[j]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(isComp[i]==<span class="number">0</span>)</span><br><span class="line">   ans++;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre>
 
 
-    for(int i=2;i*i&lt;=n;i++)&#123; 
-
-        if(isComp[i]==0)
-
-            for(int j=i*i;j&lt;=n;j+=i)
-
-        	    isComp[j]=1;
-
-    &#125;
-
-
-    for(int i=1;i&lt;=n;i++)&#123;
-
-        if(isComp[i]==0)
-
-            ans++;
-
-    &#125;
-
-    cout&lt;&lt;ans&lt;&lt;endl;
-
-    return 0;  
-
-&#125;
-</code></pre>
 <p>（来自洛谷题解.luoyoucheng）</p>
 <p>也就是从2开始把它自身的所有倍数标记为非质数，那么剩下的就是质数</p>
 <p>2.埃式筛法</p>
-<p>核心代码：<br>    bitset &lt; maxn &gt; pri;&#x2F;&#x2F;预处理，0为素数，1为合数</p>
-<pre><code>for(int i=2; i&lt;=N/i; ++i)&#123;  //从根号n开始筛选
+<p>核心代码：</p>
+<pre class="highlight"><span class="line">bitset &lt; maxn &gt; pri;<span class="comment">//预处理，0为素数，1为合数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>; i&lt;=N/i; ++i)&#123;  <span class="comment">//从根号n开始筛选</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!pri[i])  <span class="comment">//如果i是质数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i*i; j&lt;=N; j+=i) pri[j]=<span class="number">1</span>;  <span class="comment">//从它的平方开始+i筛选</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre>
 
-    if(!pri[i])  //如果i是质数
 
-        for(int j=i*i; j&lt;=N; j+=i) pri[j]=1;  //从它的平方开始+i筛选
-
-&#125;
-</code></pre>
 <p>（来自BV1hR4y1u7e1）</p>
 <p>3.欧拉筛法</p>
 <p>优化了埃式筛法中重复筛选的部分，复杂度接近线性</p>
@@ -515,49 +475,11 @@ int main ()&#123;
 <p>只需证明x的最小质因数比y小，也就是证明只有这种情况下不会提前break</p>
 <p>非常容易证，因为y是整个数的最小质因数，所以肯定是最小的，或者至少和x一样小</p>
 <p>证明完毕，虽然根本没用（</p>
-<p>记住模板得了：<br>核心代码：<br>    #include&lt;bits&#x2F;stdc++.h&gt;</p>
-<pre><code>#define maxb 1000000
-
-using namespace std;
-
-bool pan[100000100];  //判断是不是素数的数组
-
-int prime[1000000],num,n,m;  //prime数组存得到的质数，从小到大存
+<p>记住模板得了：<br>核心代码：</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> maxb 1000000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">bool</span> pan[<span class="number">100000100</span>];  <span class="comment">//判断是不是素数的数组</span></span><br><span class="line"><span class="type">int</span> prime[<span class="number">1000000</span>],num,n,m;  <span class="comment">//prime数组存得到的质数，从小到大存</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">su</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(pan,<span class="literal">true</span>,<span class="built_in">sizeof</span>(pan));</span><br><span class="line">    pan[<span class="number">0</span>]=<span class="literal">false</span>;</span><br><span class="line">    pan[<span class="number">1</span>]=<span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(pan[i])&#123;  <span class="comment">//如果是素数，把它存到数组里，同时个数+1</span></span><br><span class="line">            prime[++num]=i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;prime[j]*i&lt;=n &amp;&amp; j&lt;=num;j++)&#123;</span><br><span class="line"></span><br><span class="line">            pan[i*prime[j]]=<span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)&#123;  <span class="comment">//算法的核心</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;        </span><br><span class="line">&#125;</span><br></pre>
 
 
-void su()&#123;
 
-    memset(pan,true,sizeof(pan));
-
-    pan[0]=false;
-
-    pan[1]=false;
-
-    for(int i=2;i&lt;=n;i++)&#123;
-
-        if(pan[i])&#123;  //如果是素数，把它存到数组里，同时个数+1
-
-            prime[++num]=i;
-
-        &#125;
-
-
-        for(int j=1;prime[j]*i&lt;=n &amp;&amp; j&lt;=num;j++)&#123;
-
-            pan[i*prime[j]]=false;
-
-            if(i%prime[j]==0)&#123;  //算法的核心
-
-                break;
-
-            &#125;
-
-        &#125;
-
-    &#125;
-    
-&#125;
-</code></pre>
 <p>（参考<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/hahahage/ou-la-shai-fa%EF%BC%89">https://www.luogu.com.cn/blog/hahahage/ou-la-shai-fa）</a></p>
 <hr>
 

@@ -81,7 +81,7 @@
         content="2022-11-18">
       <meta 
         property="og:article:modified_time" 
-        content="2022-11-18">
+        content="2022-12-09">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -388,15 +388,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E7%AE%97%E6%B3%95%EF%BC%9A%E8%B4%A8%E6%95%B0/" 
-        title="算法：质数">
-        <div class="tags-list-item">算法：质数</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%AE%97%E6%B3%95/" 
         title="算法">
         <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95%EF%BC%9A%E8%B4%A8%E6%95%B0/" 
+        title="算法：质数">
+        <div class="tags-list-item">算法：质数</div>
       </a>
     
   </div>
@@ -425,7 +425,7 @@
     
     
       <span class="dot"></span>
-      <span>833 字</span>
+      <span>826 字</span>
     
   </div>
   
@@ -453,19 +453,43 @@
     id="section" 
     class="post-content">
     <h2 id="质数问题"><a href="#质数问题" class="headerlink" title="质数问题"></a>质数问题</h2><p>质数问题的通病是跑得太慢，经常会出现时间超限的情况<br>下面介绍几种相对高效的方法</p>
-<p>1.一般方法<br>核心代码：<br>    #include<iostream><br>    using namespace std;<br>    bool isComp[100000005];<br>    int main (){<br>        int n,ans&#x3D;0;<br>        cin&gt;&gt;n;<br>        isComp[1]&#x3D;1;  &#x2F;&#x2F;1的特判</p>
-<pre><code>    for(int i=2;i*i&lt;=n;i++)&#123; 
+<p>1.一般方法<br>核心代码：<br>    #include<iostream></p>
+<pre><code>using namespace std;
+
+bool isComp[100000005];
+
+int main ()&#123;
+
+    int n,ans=0;
+
+    cin&gt;&gt;n;
+
+    isComp[1]=1;  //1的特判
+
+
+    for(int i=2;i*i&lt;=n;i++)&#123; 
+
         if(isComp[i]==0)
+
             for(int j=i*i;j&lt;=n;j+=i)
+
         	    isComp[j]=1;
+
     &#125;
 
+
     for(int i=1;i&lt;=n;i++)&#123;
+
         if(isComp[i]==0)
+
             ans++;
+
     &#125;
+
     cout&lt;&lt;ans&lt;&lt;endl;
+
     return 0;  
+
 &#125;
 </code></pre>
 <p>（来自洛谷题解.luoyoucheng）</p>
@@ -473,8 +497,11 @@
 <p>2.埃式筛法</p>
 <p>核心代码：<br>    bitset &lt; maxn &gt; pri;&#x2F;&#x2F;预处理，0为素数，1为合数</p>
 <pre><code>for(int i=2; i&lt;=N/i; ++i)&#123;  //从根号n开始筛选
+
     if(!pri[i])  //如果i是质数
+
         for(int j=i*i; j&lt;=N; j+=i) pri[j]=1;  //从它的平方开始+i筛选
+
 &#125;
 </code></pre>
 <p>（来自BV1hR4y1u7e1）</p>
@@ -488,23 +515,47 @@
 <p>只需证明x的最小质因数比y小，也就是证明只有这种情况下不会提前break</p>
 <p>非常容易证，因为y是整个数的最小质因数，所以肯定是最小的，或者至少和x一样小</p>
 <p>证明完毕，虽然根本没用（</p>
-<p>记住模板得了：<br>核心代码：<br>    #include&lt;bits&#x2F;stdc++.h&gt;<br>    #define maxb 1000000<br>    using namespace std;<br>    bool pan[100000100];  &#x2F;&#x2F;判断是不是素数的数组<br>    int prime[1000000],num,n,m;  &#x2F;&#x2F;prime数组存得到的质数，从小到大存</p>
-<pre><code>void su()&#123;
+<p>记住模板得了：<br>核心代码：<br>    #include&lt;bits&#x2F;stdc++.h&gt;</p>
+<pre><code>#define maxb 1000000
+
+using namespace std;
+
+bool pan[100000100];  //判断是不是素数的数组
+
+int prime[1000000],num,n,m;  //prime数组存得到的质数，从小到大存
+
+
+void su()&#123;
+
     memset(pan,true,sizeof(pan));
+
     pan[0]=false;
+
     pan[1]=false;
+
     for(int i=2;i&lt;=n;i++)&#123;
+
         if(pan[i])&#123;  //如果是素数，把它存到数组里，同时个数+1
+
             prime[++num]=i;
+
         &#125;
 
+
         for(int j=1;prime[j]*i&lt;=n &amp;&amp; j&lt;=num;j++)&#123;
+
             pan[i*prime[j]]=false;
+
             if(i%prime[j]==0)&#123;  //算法的核心
+
                 break;
+
             &#125;
+
         &#125;
+
     &#125;
+    
 &#125;
 </code></pre>
 <p>（参考<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/hahahage/ou-la-shai-fa%EF%BC%89">https://www.luogu.com.cn/blog/hahahage/ou-la-shai-fa）</a></p>

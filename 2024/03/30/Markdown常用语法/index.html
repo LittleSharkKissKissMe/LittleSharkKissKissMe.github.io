@@ -452,21 +452,20 @@
   <div 
     id="section" 
     class="post-content">
-    <h2>介绍</h2>
-
+    <p><strong><h2>介绍</h2></strong></p>
 <p>Markdown作为轻量级标记语言，合理地使用有助于美化文本。相比html，Markdon更容易上手，且更适合作为笔记使用。为了加强学习，以后发布的博客均会采用Markdown语法。本文将简单介绍一下常用的Markdown语法。</p>
-<h2>参考资料</h2>
-
+<p><strong><h2>参考资料</h2></strong></p>
 <p><a target="_blank" rel="noopener" href="https://markdown.com.cn/">Markdown教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://daringfireball.net/projects/markdown/dingus">在线编辑器</a></p>
-<h2>语法简介</h2>
-
+<p><strong><h2>语法简介</h2></strong></p>
 <h3>1.标题</h3>
 
 <p>用’#’号前缀表示标题。</p>
 <p>示例：</p>
+<blockquote>
 <p># 这是一级标题</p>
 <p>## 这是二级标题</p>
+</blockquote>
 <p>效果：</p>
 <blockquote>
 <h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2></blockquote>
@@ -474,30 +473,40 @@
 
 <p>仅需在需要分段的文本间添加空白行即可。</p>
 <p>示例：</p>
+<blockquote>
 <p>这是第一段。</p>
 <p>这是第二段。</p>
+</blockquote>
 <p>由于中文文章的需要，经常会出现需要添加段首缩进的场景。这里可以在段首添加两个’&amp;emsp;&amp;emsp;’。每个’&amp;emsp;’表示缩进两个空格。</p>
 <p>示例：</p>
+<blockquote>
 <p>&amp;emsp;&amp;emsp;含段首缩进的段落。</p>
 <p>&amp;emsp;&amp;emsp;含段首缩进的段落。</p>
+</blockquote>
 <h3>3.换行</h3>
 
 <p>在行尾添加结尾空格或HTML的<code>&lt;br&gt;</code>标签都能实现换行。但由于空格本身难以识别，建议使用<code>&lt;</code>br<code>&gt;</code>标签</p>
 <p>示例：</p>
+<blockquote>
 <p>这是第一行。<code>&lt;br&gt;</code>这是第二行。</p>
 <p>这是第一行。<br>这是第二行。</p>
+</blockquote>
 <p>个人觉得换行使用的场景比分段少。一般每句话之间用换行就能实现区分。</p>
 <h3>4.强调</h3>
 
 <p>主要是粗体和斜体，粗体为双星号，斜体为单星号。</p>
 <p>示例：</p>
+<blockquote>
 <p>**粗体**与*斜体*。</p>
 <p><strong>粗体</strong>与<em>斜体</em>。</p>
+</blockquote>
 <h3>5.引用</h3>
 
 <p>将要引用的部分加上’&gt;’前缀。</p>
 <p>示例：</p>
+<blockquote>
 <p>&gt; 比如说，我想引用这段话。<br>&gt;<br>&gt; 中间可以用空行隔开。</p>
+</blockquote>
 <blockquote>
 <p>比如说，我想引用这段话。</p>
 <p>中间可以用空行隔开。</p>
@@ -516,11 +525,9 @@
 
 <p>转义字符细究其实还挺复杂。但是通常’\a’或`a`就能实现转义。其中a为欲转义的字符。只有几个字符比较特殊。</p>
 <p>‘<code>&lt;</code>‘通常用于标签，不能用’&#39;,只能用` `转义。而&amp;必须写成&amp;amp;。(注意，别跟缩进符&amp;amsp;搞混)</p>
-<h2>心得</h2>
-
+<p><strong><h2>心得</h2></strong></p>
 <p>Markdown的语法其实相当简单，而且在VScode里编写时可以通过高亮等直接看到效果。即便如此，这篇简单的博客也花了我一个小时编写。但了解Markdown的语法显然是必要的。如果不添加任何修饰，一篇文章会变得乏味甚至混乱。为了配合算法分析的课程，除了Markdown，后续还会进行LaTex的学习。</p>
-<h2>疑问</h2>
-
+<p><strong><h2>疑问</h2></strong></p>
 <p>有点奇怪的一点是，我在编辑器上用##显示二级标题时，它是比一级标题要小的，然而发布到hexo里面时，明显能看到二级标题字体大小大于一级标题，且标题下方无法显示换行。猜测是由于博客主题的CSS设置导致的。为了方便编写，以后区分标题级别均用HTML标签解决。即<code>&lt;h2&gt;</code>代替#，<code>&lt;h3&gt;</code>代替##。</p>
 
   </div>

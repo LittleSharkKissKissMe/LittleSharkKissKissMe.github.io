@@ -388,9 +388,9 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
-        title="文本编辑">
-        <div class="tags-list-item">文本编辑</div>
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
       </a>
     
       <a 
@@ -400,15 +400,15 @@
       </a>
     
       <a 
-        href="/tags/%E7%AE%97%E6%B3%95/" 
-        title="算法">
-        <div class="tags-list-item">算法</div>
-      </a>
-    
-      <a 
         href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
         title="服务外包">
         <div class="tags-list-item">服务外包</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
       </a>
     
   </div>
@@ -495,7 +495,8 @@
 <p>var map &#x3D; this.selectComponent(‘#map’);</p>
 <p>报错：<br>TypeError: Cannot read property ‘moveTo’ of null</p>
 <p>尝试解决：</p>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/0008cc8ebcc5280b38ba44bba56c00">https://developers.weixin.qq.com/community/develop/doc/0008cc8ebcc5280b38ba44bba56c00</a><br>         <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/wxml/wx.createSelectorQuery.html">https://developers.weixin.qq.com/miniprogram/dev/api/wxml/wx.createSelectorQuery.html</a></p>
+<p>参考链接1：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/0008cc8ebcc5280b38ba44bba56c00">https://developers.weixin.qq.com/community/develop/doc/0008cc8ebcc5280b38ba44bba56c00</a></p>
+<p>参考链接2：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/wxml/wx.createSelectorQuery.html">https://developers.weixin.qq.com/miniprogram/dev/api/wxml/wx.createSelectorQuery.html</a></p>
 <p>解决：然而这种操作实在麻烦，感觉是画蛇添足，微信小程序官方文档的示例方式本身就有移动方式的视线。首先x和y的单位只支持px和rpx，rpx最大值固定为750，但高度取决于机型，没有特定单位。因此后续开发考虑用api获取用户机型的长宽比。现在暂时按照长宽比4:1估算。为了把特定坐标（x,y）移动到屏幕中心，需要进行计算。</p>
 <p>计算过程如下：</p>
 <p>对于输入的坐标（x,y），不能直接用于view定位。因为view的x,y设定的是左上角的坐标，而输入（x,y）是想把地图上这一点的坐标移动到屏幕中心。为此，需要进行转换。假设屏幕长宽都为100（单位为vw和vh），那么转换过后左上角的要为（50-x,50-y），这样才能使地图上（x,y）的坐标位于屏幕中心。同时还需计算坐标范围，以地图长300，宽140计算，x的范围为（50,250），y的范围为（50,90）。由于x和y的单位只支持px和rpx，接下来把vw和vh转换为rpx。按4:1的假设长宽比，屏幕宽度为750rpx，高度为188rpx。把计算公式以及范围进行相应的转换，得到最终范围，并在输入框中显示该范围。</p>
@@ -506,7 +507,8 @@
 <p>构思：位置图标应该放在地图内部，与地图的相对位置保持不变，仅设定目标改变时改变，达到类似嵌套在地图里的效果。由于image本身不支持嵌套，考虑把地图改由view实现，并在view中嵌套image，也就是位置图标。</p>
 <p>问题：view中设置背景图像的属性为background-image，一旦图片本身小于view的大小，剩余的地方不会自适应填充，而是会用重复的部分填充，也就是水平方向和竖直方向平铺。而我们想达到的效果是让图片填充父容器，且只出现一次。</p>
 <p>在网上找到了避免重复的办法。但另一个问题随之出现，此时的背景图片大小不变，只靠一张无法填满。</p>
-<p>顺蔓摸瓜，找到官方说明文档：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size">https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size</a><br>那么思路就很清晰了。</p>
+<p>顺蔓摸瓜，找到官方说明文档：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size">https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size</a></p>
+<p>那么思路就很清晰了。</p>
 <p>解决：只需在属性中添加两句代码：background-repeat:no-repeat;background-size: 100% 100%;<br>接着把目标位置用top和left分别绑定targetY和targetX，加上祖传居中transform: translate(-50%, -50%)即可。可以看到，横坐标是非常准确的。而纵坐标由于长宽比估算的缘故，误差较大。后续调用api得到准确的长宽比后再加以修改。至此，问题基本解决。</p>
 <hr>
 <p>Task4：将制作好的假地图与原先的主界面整合到一起</p>

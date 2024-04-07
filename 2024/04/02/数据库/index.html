@@ -81,7 +81,7 @@
         content="2024-04-02">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-02">
+        content="2024-04-07">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>19</span>
+    <span>20</span>
     <span>文章</span>
   </a>
   <a 
@@ -400,15 +400,15 @@
       </a>
     
       <a 
-        href="/tags/%E6%9D%82%E8%B0%88/" 
-        title="杂谈">
-        <div class="tags-list-item">杂谈</div>
-      </a>
-    
-      <a 
         href="/tags/%E8%AF%BE%E7%A8%8B/" 
         title="课程">
         <div class="tags-list-item">课程</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9D%82%E8%B0%88/" 
+        title="杂谈">
+        <div class="tags-list-item">杂谈</div>
       </a>
     
       <a 
@@ -443,7 +443,7 @@
     
     
       <span class="dot"></span>
-      <span>40 字</span>
+      <span>1.8k 字</span>
     
   </div>
   
@@ -471,9 +471,132 @@
     id="section" 
     class="post-content">
     <p>SQL语言</p>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/sql/relational-databases/search/full-text-search?view=sql-server-ver16">https://learn.microsoft.com/zh-cn/sql/relational-databases/search/full-text-search?view=sql-server-ver16</a></p>
-<p>本文主要探究查询问题</p>
-<p>全文搜索查询</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/sql/relational-databases/search/full-text-search?view=sql-server-ver16%EF%BC%88%E6%B2%A1%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%89">https://learn.microsoft.com/zh-cn/sql/relational-databases/search/full-text-search?view=sql-server-ver16（没什么用）</a></p>
+<!-- 以后上自控就直接上其他科目了。自控本身只能看PPT学习，自学成本较高，还不如老老实实跟着PPT走。而且本身对于专业素养帮助不大，以后自控纯当自习课，除非进度赶上 -->
+
+<p>数据库原理及应用</p>
+<p>一、数据库系统概述</p>
+<p>1.1 基本概念</p>
+<p>先弄清几个基本概念</p>
+<p>Data：数据。是数据库中存储的基本对象，是描述事物的符号记录。</p>
+<p>DataBase：DB。也就是数据库。指长期存储在计算机内有组织可共享的大量数据的集合。</p>
+<p>数据管理：收集、存储、处理和应用数据的过程。</p>
+<p>数据库管理系统（DBMS）：位于用户和计算机操作系统之间的一层数据管理软件。主要功能：数据定义、数据操作、事务管理和运行管理、数据存储和查询处理、建立和维护功能</p>
+<p>DataBase System：数据库系统。</p>
+<pre><code>由数据库DB、数据管理系统DBMS、数据库管理员DBA、应用程序组成。
+
+优点：数据整体结构化（？）、数据共享性高、数据独立性高（物理独立性和逻辑独立性）
+
+数据统一由DBMS控制
+</code></pre>
+<p>如何理解其组成和优点？</p>
+<p>1.2 数据模型</p>
+<p>定义：一种形式机制，用于数据建模，描述数据、数据之间的联系、数据的语义、数据上的操作和数据的完整性约束条件</p>
+<p>（有点抽象了哥）</p>
+<p>概念模型（信息模型）：<strong>实体-联系</strong>(E-R)模型是一种广泛使用的概念模型</p>
+<p>数据模型三要素：</p>
+<p>a.数据结构：描述数据库中的对象和对象之间的联系，是对系统静态特性的描述</p>
+<p>b.数据操作：数据操作定义数据库中各种数据对象的实例上允许执行的操作和操作规则(查询和更新)，是对系统动态特性的描述</p>
+<p>c.数据完整性约束：数据的完整性约束条件是一组规则，用以限定符合数据模型的数据库状态和状态的变化，保证数据的正确、有效和相容</p>
+<p>目前最流行的数据模型是<strong>关系模型</strong>，关系的每个属性必须取原子值</p>
+<p>（关系模型是什么？原子值又是什么？）</p>
+<p>1.3 数据库系统的结构</p>
+<p>a.模式：对全体数据逻辑结构和特征的描述，对型的描述，不涉及具体值</p>
+<p>（说了个牛魔）</p>
+<p>b.实例：模式的一个具体值</p>
+<p>三级模式：</p>
+<p>a.外模式。……？？？？？</p>
+<p>b.逻辑模式。也可以简称为<strong>模式</strong>。……？？？？？</p>
+<p>c.内模式。……？？？？？</p>
+<p>二级模式：</p>
+<p>a.外模式-模式映像：保证数据的逻辑独立性</p>
+<p>（但是牛魔逻辑不是模式管的吗？关你外模式什么事？跟模式映像有关吗？）</p>
+<p>b.模式-内模式映像：保证数据的物理独立性。具有唯一性。</p>
+<p>（呃呃，换妻play是吧）</p>
+<p>扩展：……</p>
+<p>（基础的都已经呃呃了，扩展就省略了）</p>
+<p>二、实体-联系模型</p>
+<p>2.1 基本概念</p>
+<p>实体：客观存在并且可以相互区分的任何事物，可以是实际对象，也可以是抽象模型</p>
+<p>个人理解为any。</p>
+<p>实体集：具有相同属性的实体的集合</p>
+<p>呃，任意数据类型的数组？</p>
+<p>码：</p>
+<p>a.超码：能够唯一确定实体集中每个实体的属性集，(包含无关紧要属性的码)</p>
+<p>b.候选码：真子集都不是超码的极小超码(<strong>最小超码</strong>)</p>
+<p>c.主码：用来区分同一实体集中不同实体的候选码**(从候选码中选即可)**，(最多只能有一个的码)<br>码：表示主码或候选码</p>
+<p>对于学生实体集中，{学号}和{学号，姓名}都是超码，{学号}是极小超码，因为它的真子集是空集，不是超码，如果不允许重名的话，{姓名}也是极小超码，{学号}，{姓名}都是候选码，可以选择{学号}作为主码</p>
+<p>（不是哥们，你能不能先解释一下码到底是什么？）</p>
+<p>属性：</p>
+<p>a.简单属性：不能划分成更小部分的属性</p>
+<p>b.复合属性：可以划分成更小部分的属性(具有层次关系)</p>
+<p>c.单值属性：是特定的实体在该属性上只能取单个值的属性</p>
+<p>d.多值属性：是特定的实体在该属性上只能取多个值的属性(具有对等关系)</p>
+<p>e.基本属性：不能通过其他属性的值来推导出来（即它的值必须存储在系统中）的属性</p>
+<p>f.派生属性：派生属性的值可以从其他相关属性或实体计算得到，因此派生属性又称计算属性</p>
+<p>（列了很多，但是我其实一点没看，感觉都不是重点）</p>
+<p>（自控重点：奈奎斯特稳定判据。复变函数：函数变量是复数。）</p>
+<p>2.2 实体-联系图</p>
+<p>联系是多个实体之间的相互联系。联系集是相同类型联系的集合。</p>
+<p>联系的类型：</p>
+<pre><code>一对一联系
+
+一对多(多对一)联系
+
+多对多联系
+</code></pre>
+<p>（这个我会.jpg）</p>
+<p>2.3 弱实体集合</p>
+<hr>
+<p>等下，好像SQL语言和数据库概念是分开学习的</p>
+<p>六、关系数据库标准语言</p>
+<p>6.1 SQL概述</p>
+<p>SQL可以分为数据定义语言(DDL)、SQL的数据操纵语言(DML)、SQL的数据控制语言(DCL)。</p>
+<p>特点：集多种数据库语言于一体、高度非过程化(大大减轻了用户负担&#x2F;有利于提高数据的独立性)、面向集合的操作方式、一种语法两种使用方式、功能强大，语言简洁</p>
+<p>（这些都是何意啊，如何得出来的？）</p>
+<p>6.2 SQL的数据类型</p>
+<p>经典老番：</p>
+<pre><code>CHAR(n)：定长字符串，长度n由用户指定·省略n时，长度为1,CHAR的全称是CHARACTER
+
+VARCHAR(n)：变长字符串，最大长度n由用户指定, VARCHAR的全称是CHARACTER VARYING
+
+INT：整数，其值域依赖于具体实现。INT的全称是INTEGER
+
+SMALLINT：小整数，其值域依赖于具体实现，但小于INT的值域
+
+FLOAT(n)：精度至少为n位数字的浮点数，其值域依赖于实现REAL:实数，精度依赖于实现
+
+DOUBLE PRECISION：双精度实数，精度依赖于实现，但精度比REAL高
+</code></pre>
+<p>特有：</p>
+<pre><code>BIT(n)：定长二进位串，长度n由用户指定。省略n时，长度为1
+
+BIT VARYING(n)：变长二进位串，最大长度n由用户指定
+
+DEC(p, d)：p位有效数字的定点数，其中小数点右边占d位。DEC的全称是DECIMAL
+
+DATE：日期，包括年﹑月﹑日，格式为YYYY-MM-DD
+
+TIME：时间，包括时﹑分﹑秒,格式为HH:MM:SS。TIME(n)可以表示比秒更小的单位，秒后取n位
+
+TIMESTAMP：时间戳，是DATE 和 TIME的结合
+
+INTERVAL：时间间隔。SQL允许对DATE 、TIME和INTERVAL类型的值进行计算
+
+SQL提供ETRACT(field FROM Var) , Var可以是DATE ·TIME 或TIMESTAMP数据类型的变
+</code></pre>
+<p>量,ETRACT函数的功能是从 Var 中提取字段field</p>
+<p>6.3 模式、表、索引的定义和删除</p>
+<!-- （牛魔，困死了，学不进去一点，脑子跟被丢进搅拌机里一样） -->
+
+<p>模式</p>
+<p>……</p>
+<p>表</p>
+<p>……</p>
+<p>索引</p>
+<p>……</p>
+<p>6.4 数据操作</p>
+<hr>
 
   </div>
   <div>
@@ -573,6 +696,11 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-07</div>
+        <a href="/2024/04/07/%E8%BF%8E%E6%96%B0%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%EF%BC%883%EF%BC%89/"><div class="recent-posts-item-content">迎新平台开发（3）</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-05</div>
         <a href="/2024/04/05/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/"><div class="recent-posts-item-content">数字电路与数字逻辑B</div></a>
       </div>
@@ -585,11 +713,6 @@
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-02</div>
         <a href="/2024/04/02/%E6%95%B0%E6%8D%AE%E5%BA%93/"><div class="recent-posts-item-content">数据库</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-01</div>
-        <a href="/2024/04/01/%E8%BF%8E%E6%96%B0%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/"><div class="recent-posts-item-content">迎新平台开发（2）</div></a>
       </div>
     
   </div>

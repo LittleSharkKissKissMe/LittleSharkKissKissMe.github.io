@@ -81,7 +81,7 @@
         content="2024-04-02">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-07">
+        content="2024-04-09">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -388,15 +388,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
-        title="服务外包">
-        <div class="tags-list-item">服务外包</div>
-      </a>
-    
-      <a 
         href="/tags/%E8%AF%BE%E7%A8%8B/" 
         title="课程">
         <div class="tags-list-item">课程</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
+        title="服务外包">
+        <div class="tags-list-item">服务外包</div>
       </a>
     
       <a 
@@ -590,13 +590,108 @@ SQL提供ETRACT(field FROM Var) , Var可以是DATE ·TIME 或TIMESTAMP数据类�
 <!-- （牛魔，困死了，学不进去一点，脑子跟被丢进搅拌机里一样） -->
 
 <p>模式</p>
+<p>分层：目录(catlog) – 模式(schema) – 对象</p>
+<!--这里的模式指的是逻辑模式-->
+
+<!-- 
+
+语法： 
+
+1.创建模式
+
+CREATE SCHEMA<模式名>[<模式元素（何意啊）>]
+
+create schema<模式名>[<模式元素>]
+
+或者+后缀AUTHORIZATION<用户名>（authorization）
+
+2.删除模式
+
+DROP SCHEMA [<模式名>] CASCADE|RESTRICT
+
+drop schema …… cascade|restrict
+
+cascade:……
+
+restrict:……
+
+
+-->
+
 <p>……</p>
 <p>表</p>
+<!--
+
+语法：
+
+1.创建表
+
+CREATE TABLE<表名>
+
+2.列级约束
+
+3.表级约束
+
+4.修改基本表
+
+ALTER TABLE<表名>
+
+ -->
+
 <p>……</p>
 <p>索引</p>
+<!--呃呃-->
+
 <p>……</p>
 <p>6.4 数据操作</p>
 <!-- 博客一直装C盘里也不太好，后面改造完成以后再考虑搬到E盘 -->
+
+
+
+<!--
+
+1.SELECT
+
+SELECT
+
+FROM 
+
+WHERE
+
+连接查询？嵌套查询？子查询？集合查询？
+
+-->
+
+<!--
+
+2.数据更新
+
+插入、删除、修改等
+
+-->
+
+<hr>
+<p>6.5 视图</p>
+<!--
+
+首先需要解决的问题是，视图是何意啊？
+
+表本身不就够用了吗
+
+可视化？
+
+-->
+
+
+<hr>
+<p>七、数据库的完整性</p>
+<!--
+
+7.1 完整性概述
+
+
+
+-->
 
 <hr>
 

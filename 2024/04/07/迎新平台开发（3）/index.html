@@ -81,7 +81,7 @@
         content="2024-04-07">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-09">
+        content="2024-04-16">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>20</span>
+    <span>24</span>
     <span>文章</span>
   </a>
   <a 
@@ -388,21 +388,21 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E8%AF%BE%E7%A8%8B/" 
-        title="课程">
-        <div class="tags-list-item">课程</div>
-      </a>
-    
-      <a 
-        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
-        title="服务外包">
-        <div class="tags-list-item">服务外包</div>
-      </a>
-    
-      <a 
         href="/tags/%E6%9D%82%E8%B0%88/" 
         title="杂谈">
         <div class="tags-list-item">杂谈</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
+      </a>
+    
+      <a 
+        href="/tags/%E8%AF%BE%E7%A8%8B/" 
+        title="课程">
+        <div class="tags-list-item">课程</div>
       </a>
     
       <a 
@@ -412,9 +412,9 @@
       </a>
     
       <a 
-        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
-        title="文本编辑">
-        <div class="tags-list-item">文本编辑</div>
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
+        title="服务外包">
+        <div class="tags-list-item">服务外包</div>
       </a>
     
   </div>
@@ -443,7 +443,7 @@
     
     
       <span class="dot"></span>
-      <span>509 字</span>
+      <span>903 字</span>
     
   </div>
   
@@ -489,16 +489,17 @@
 <p>b.方案二，完全采用作者方案，把每个成就拆成两块，上方是图片&#x2F;图片和交互按钮，下方是进度条</p>
 <p>c.方案三，放弃原方案，自己手搓（呃呃）</p>
 <p>最后稍微折中一步，采用封装进度条，但是按钮和图标手搓</p>
+<p>效果感觉还行？但是图标太小了看不清，可能素材要修一下</p>
 <hr>
 <p>修复已知问题</p>
 <p>1.地图</p>
-<p>首先要说明的是，地图本身的坐标计算方式是有问题的（横坐标没问题，纵坐标由于屏幕比不同就呃呃了）。但是为了赶进度，这里采用实验的方式“试”出最佳位置</p>
+<p>首先要说明的是，地图本身的坐标计算方式是有问题的（横坐标没问题，纵坐标由于屏幕比不同就乱套了）。但是为了赶进度，这里采用实验的方式“试”出最佳位置</p>
 <p>记录五个地点</p>
-<p>教学楼A：1500,1600</p>
-<p>教学楼B：1300,750</p>
-<p>宿舍楼：500,850</p>
-<p>操场：1000,1500</p>
-<p>食堂：2050,1000</p>
+<p>教学楼A：1500,1600<br>（广知楼A）</p>
+<p>教学楼B：1300,750<br>（广知楼B）</p>
+<p>宿舍楼：500,850<br>（家和东苑）</p>
+<p>操场：1000,1500<br>（操场）</p>
+<p>食堂：2050,1000<br>（养贤府）</p>
 <p>接着把这五个地点打包，使得选项仅有这五个，并且输入该选项能达到与输入X和Y相同的效果</p>
 <p>替换一下即可</p>
 <p>2.信封</p>
@@ -506,6 +507,26 @@
 <p>（没有技术含量，仅为了增加代入感）</p>
 <p>3.任务列表</p>
 <p>构思：……？</p>
+<hr>
+<p>插播一下前后端对接的进度。</p>
+<p>现在是前端整理数据给后端的阶段，现在界面的数据基本已经整理好了，还差“我的”界面里面的数据，因为涉及到广告推送机制，有点难以下手。</p>
+<hr>
+<p>继续写，15号之前要全部完工</p>
+<p>首先是我们没有技术含量、仅仅是为了增加用户代入感的信封</p>
+<p>（典中典之我抄我自己）</p>
+<p>但是这次与上次还是有些不一样。上次的动画效果中组件对象是由监听器自己传进来的，很容易修改组件的相应属性。但是现在要实现在跳转的时候组件触发动画。所以首先要获取这个组件。</p>
+<p>……</p>
+<p>不是，获取个组件怎么全是bug……</p>
+<p>也没啥时间学习新方法了，凑合着用事件监听上吧</p>
+<p>……</p>
+<hr>
+<p>修改地点</p>
+<p>完成</p>
+<p>有一说一，改成造假以后很多问题都不用考虑了</p>
+<p>尝试把微动画代码移植到信封模块。不是，为什么我抄我自己的代码还能出错啊</p>
+<p>考虑是背景的点击事件和信封的点击事件冲突，删除背景点击事件。然而实际测试，即使删除了整个背景，微动画依然无法实现</p>
+<p>好了，我是傻逼</p>
+<p>@import “..&#x2F;..&#x2F;colorui&#x2F;animation.wxss”;</p>
 
   </div>
   <div>
@@ -535,6 +556,20 @@
   </div>
 </article>
 <div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2024/04/11/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">自动控制原理 </div>
+          
+        </div>
+      </a>
+    </div>
   
   
     <div class="nav-item-next">
@@ -591,23 +626,23 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-07</div>
-        <a href="/2024/04/07/%E8%BF%8E%E6%96%B0%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%EF%BC%883%EF%BC%89/"><div class="recent-posts-item-content">迎新平台开发（3）</div></a>
+        <div class="recent-posts-item-title">2024-04-20</div>
+        <a href="/2024/04/20/4-20-%E6%95%B4%E7%90%86%E6%80%9D%E7%BB%AA/"><div class="recent-posts-item-content">24.4.20 整理思绪</div></a>
       </div>
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-05</div>
-        <a href="/2024/04/05/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/"><div class="recent-posts-item-content">数字电路与数字逻辑B</div></a>
+        <div class="recent-posts-item-title">2024-04-16</div>
+        <a href="/2024/04/16/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B-%E7%AC%AC%E5%9B%9B%E7%AB%A0/"><div class="recent-posts-item-content">数字电路与数字逻辑B 第四章</div></a>
       </div>
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-03</div>
-        <a href="/2024/04/03/%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C/"><div class="recent-posts-item-content">算法实验</div></a>
+        <div class="recent-posts-item-title">2024-04-16</div>
+        <a href="/2024/04/16/%E8%BF%8E%E6%96%B0%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%EF%BC%884%EF%BC%89/"><div class="recent-posts-item-content">迎新平台开发（4）</div></a>
       </div>
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-02</div>
-        <a href="/2024/04/02/%E6%95%B0%E6%8D%AE%E5%BA%93/"><div class="recent-posts-item-content">数据库</div></a>
+        <div class="recent-posts-item-title">2024-04-11</div>
+        <a href="/2024/04/11/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/"><div class="recent-posts-item-content">自动控制原理</div></a>
       </div>
     
   </div>

@@ -81,7 +81,7 @@
         content="2024-04-16">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-20">
+        content="2024-04-26">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>24</span>
+    <span>27</span>
     <span>文章</span>
   </a>
   <a 
@@ -341,7 +341,7 @@
   <a 
     class="author-tags-count" 
     href="/tags">
-    <span>5</span>
+    <span>7</span>
     <span>标签</span>
   </a>
 </div>
@@ -388,21 +388,33 @@
   <div class="tags-list">
     
       <a 
+        href="/tags/%E8%AF%BE%E7%A8%8B/" 
+        title="课程">
+        <div class="tags-list-item">课程</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
+        title="服务外包">
+        <div class="tags-list-item">服务外包</div>
+      </a>
+    
+      <a 
         href="/tags/%E6%9D%82%E8%B0%88/" 
         title="杂谈">
         <div class="tags-list-item">杂谈</div>
       </a>
     
       <a 
-        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
-        title="文本编辑">
-        <div class="tags-list-item">文本编辑</div>
+        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
+        title="计算机组成原理">
+        <div class="tags-list-item">计算机组成原理</div>
       </a>
     
       <a 
-        href="/tags/%E8%AF%BE%E7%A8%8B/" 
-        title="课程">
-        <div class="tags-list-item">课程</div>
+        href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
+        title="算法分析与设计">
+        <div class="tags-list-item">算法分析与设计</div>
       </a>
     
       <a 
@@ -412,9 +424,9 @@
       </a>
     
       <a 
-        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
-        title="服务外包">
-        <div class="tags-list-item">服务外包</div>
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
       </a>
     
   </div>
@@ -443,7 +455,7 @@
     
     
       <span class="dot"></span>
-      <span>1.9k 字</span>
+      <span>2.8k 字</span>
     
   </div>
   
@@ -633,11 +645,226 @@
 
         图片
 </code></pre>
-<p>（</p>
-<p>最近还是有点萎靡。整理一下期中考，考试科目：数据库、计组、算法、数电。数据库一点没学，计组和数电稍微好一点。还是先按进度赶上。</p>
-<p>淦哦，范围都没有，如何是好。</p>
-<p>呃呃，根据作业来看吧。作业写到哪大致就复习到哪好了。</p>
-<p>）</p>
+<p>显示译码器</p>
+<pre><code>七段LED数码管的结构及显示原理
+
+    图片
+
+2.显示原理
+
+    a-g实际是发光二极管，利用点亮其中某几段来构成0 ~ 9字形。
+
+3.显示译码器的逻辑功能
+
+    输入为4位8421BCD码，输出为七段亮灭。
+
+4.真值表
+
+    图片
+
+    注意伪码，也就是无效的输入码。结果为消隐。
+
+CD4511
+
+    图片
+
+    BI：熄灭信号输入。低电平输入时，a ~ g均为低电平（全灭）
+
+    LT：试灯信号输入。低电平输入时，a ~ g均为高电平（全亮）
+</code></pre>
+<p>数据选择器（MUX）</p>
+<pre><code>图片
+
+功能：将多路信号有选择地送到一条输出总线上去。简而言之，就是多路输入中，选择一路送到输出端。具体选择哪一路，由地址码决定。
+
+4选1数据选择器
+
+    1.真值表
+
+        图片
+
+        表中Di就是地址码对应的输入线路。
+
+    2.逻辑函数表达式
+
+        图片
+
+        （要记住）
+
+双4选1数据选择器（74LS153）
+
+    ……
+
+8选1数据选择器（74LS151）
+
+    ……
+
+    引脚和功能表
+
+应用：
+
+    用使能端，将两片8选1数据选择器扩展16选1数据选择器
+
+        图片
+
+        a.确认高8位和低8位
+
+        b.连接（怎么想到的？）
+
+            地址码最高位（？）
+
+    实现逻辑函数
+
+        图片
+
+        用8选1MUX实现逻辑函数L(A,B,C)
+
+            a.列出8选1MUX输出Y的表达式
+
+            b.与L(A,B,C)对应（没有对应项的就是0）
+
+            （何意啊？）
+
+        用4选1数据选择器实现函数F(A,B,C)
+
+            a.列出4选1数据选择器的函数表达式
+
+            b.与F(A,B,C)对应
+
+            **注意变量不对应时如何解决：选两个作为地址码（A、B）,剩下一个通过奇奇怪怪的表达式表示**
+
+            我是天才之：用最少量门电路问题——找到出现频率最高的变量，将其作为地址码变量
+
+            （唯一需要注意的是，出现最少量一般意味着只能用该门电路，而且最好把输入分开画）
+
+            图片
+
+            （但是我依然是天才）
+
+        总结：
+
+            图片
+</code></pre>
+<p>4.4 数值比较器、加法器</p>
+<p>数值比较器</p>
+<pre><code>对两个无符号二进制数A、B进行比较，以判断其大小的组合逻辑电路
+
+输入：被比较的数字
+
+输出：两数比较的结果
+
+一位数值比较器
+
+    真值表：
+
+        图片
+
+        （和或是何意啊？）
+
+    逻辑函数表达式：
+
+        ……
+
+    逻辑电路图：
+
+        ……
+
+四位数值比较器
+
+    原理：
+
+        跟十进制一样，从最高位开始比较到最低位
+
+    真值表：
+
+        （级联输入：末尾哨兵？比A0和B0更低的位数？似乎与前一级输出有关？ ）
+
+        图片
+
+    逻辑函数表达式：
+
+        ……
+
+用级联法实现多位数值比较
+
+    例：用两片4位二进制数值比较器实现8位二进制数比较
+
+        图片
+</code></pre>
+<p>加法器</p>
+<pre><code>一位半加器（两个一位二进制数相加 ，不考虑低位进位，但是自己有进位要输出）
+
+    真值表：
+
+        图片
+
+    输出函数：
+
+        ……
+
+    逻辑图：
+
+        图片
+
+    逻辑符号：
+
+        图片
+
+如何用与非门实现半加器？
+
+    ……
+
+    （实现更少，但是为什么？）
+
+一位全加器（考虑低位进位）
+
+    逻辑规定：
+
+        ……
+
+    逻辑函数表达式：
+
+        ……
+
+    逻辑符号：
+
+        ……
+
+N位加法器（实现N位二进制数相加）
+
+    分类：串行进位加法器、超前进位加法器
+
+    （计组差不多都上过……）
+
+    串行进位加法器：
+
+        ……
+
+    超前进位加法器：
+
+        进位位直接由加数、被加数和最低位进位位CI0形成
+
+    4位加法器的逻辑符号：
+
+        图片
+
+加法器的应用：
+
+    N位加法运算、代码转换、减法器、十进制加法
+</code></pre>
+<p>4.5 位扩展技术、用MSI&#x2F;LSI设计组合电路</p>
+<p>扩展：</p>
+<pre><code>编码器的位扩展技术
+
+译码器的扩展技术
+
+数据选择器的扩展技术
+
+数值比较器的扩展技术
+</code></pre>
+<p>方法：</p>
+<pre><code>利用功能扩展端、树形结构
+</code></pre>
 
   </div>
   <div>
@@ -737,23 +964,23 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-24</div>
+        <a href="/2024/04/24/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%83%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第七章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-22</div>
+        <a href="/2024/04/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%89%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第三章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-20</div>
+        <a href="/2024/04/20/%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E4%B8%80%E7%AB%A0/"><div class="recent-posts-item-content">新数据库 第一章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-20</div>
         <a href="/2024/04/20/4-20-%E6%95%B4%E7%90%86%E6%80%9D%E7%BB%AA/"><div class="recent-posts-item-content">24.4.20 整理思绪</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-16</div>
-        <a href="/2024/04/16/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B-%E7%AC%AC%E5%9B%9B%E7%AB%A0/"><div class="recent-posts-item-content">数字电路与数字逻辑B 第四章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-16</div>
-        <a href="/2024/04/16/%E8%BF%8E%E6%96%B0%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%EF%BC%884%EF%BC%89/"><div class="recent-posts-item-content">迎新平台开发（4）</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-11</div>
-        <a href="/2024/04/11/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/"><div class="recent-posts-item-content">自动控制原理</div></a>
       </div>
     
   </div>

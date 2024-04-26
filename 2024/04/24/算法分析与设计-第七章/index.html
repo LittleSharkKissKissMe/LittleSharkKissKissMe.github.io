@@ -18,7 +18,7 @@
   <link 
     rel="icon" 
     href="/">
-  <title>其他</title>
+  <title>算法分析与设计 第七章</title>
   <style type="text/css">
     .fullscreenvideo {
         position: absolute;
@@ -59,12 +59,12 @@
     
       <meta 
         property="og:title" 
-        content="其他">
+        content="算法分析与设计 第七章">
     
     
       <meta 
         property="og:url" 
-        content="https://littlesharkkisskissme.github.io/2022/11/18/%E5%85%B6%E4%BB%96/index.html">
+        content="https://littlesharkkisskissme.github.io/2024/04/24/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%83%E7%AB%A0/index.html">
     
     
       <meta 
@@ -78,10 +78,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-11-18">
+        content="2024-04-24">
       <meta 
         property="og:article:modified_time" 
-        content="2024-03-30">
+        content="2024-04-24">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -89,7 +89,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="算法">
+            content="算法分析与设计">
         
       
     
@@ -358,7 +358,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E6%8F%90%E5%8D%87%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87"><span class="toc-text">有关提升运行效率</span></a></li></ol>
+
       </div>
     </article>
   
@@ -441,21 +441,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      其他
+      算法分析与设计 第七章
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-11-18T08:52:32.000Z">
+    <time datetime="2024-04-24T06:03:31.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-11-18</span>
+      <span>2024-04-24</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>49 字</span>
+      <span>1.5k 字</span>
     
   </div>
   
@@ -470,9 +470,9 @@
         
           
           <a 
-            href="/tags/%E7%AE%97%E6%B3%95/" 
+            href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
             class="post-meta-link">
-            算法
+            算法分析与设计
           </a>
         
       </div>
@@ -482,8 +482,123 @@
   <div 
     id="section" 
     class="post-content">
-    <h2 id="有关提升运行效率"><a href="#有关提升运行效率" class="headerlink" title="有关提升运行效率"></a>有关提升运行效率</h2><p>1.inline内联函数<br>2.memset预设处理（洛谷中需使用头文件string.h）<br>3.register将变量尽可能存在寄存器中，以提高效率</p>
-<hr>
+    <p>（最近没什么学习动力，感觉事情一多就啥都不想做。如果是要命的事情可能还会有动力，但是偏偏都是些时间弹性很大的事，唉唉）</p>
+<p>（还有阿B怎么又给我推荐上古老物，天天念叨你那B复古怀旧，死了就自觉滚回棺材里躺好，不要天天恶心活人）</p>
+<p>第七章 贪心算法</p>
+<p>（虽然动态规划还没彻底掌握，但是贪心算法不能再拖了，没学根本没动力做实验的）</p>
+<p>7.1 贪心算法简介</p>
+<p>定义：</p>
+<pre><code>贪心算法（greedy algorithm，又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择，即贪心算法并不从整体最优上加以考虑，它所得出的仅仅是在某种意义上的局部最优解。
+</code></pre>
+<p>区别（与动态规划相比）：</p>
+<pre><code>1.解决问题的性质。贪心算法适用于的问题通常是在每个决策步骤中，当前的最优选择对未来步骤的影响是可以预测的，例如，寻找最短路径问题时，总是选择当前看起来最短的路径；动态规划适用于子问题重叠的情况，每个子问题的解决方案可以被缓存并用于解决其他相似的子问题，例如，在背包问题中，可能会有多个子问题需要解决，而这些子问题之间存在重叠。
+
+2.算法的优缺点。贪心算法通常较为简单，因此在计算上更高效，但由于它是一种局部搜索算法，可能无法找到全局最优解；动态规划则能保证找到全局最优解，但通常实现起来更复杂，计算量也更大。
+
+3.适用的问题类型。贪心算法适用于那些可以分解为独立步骤的问题，每一步的选择只依赖于当前的状态，而不需要回溯或考虑未来的步骤；动态规划则适用于那些可以分解为相互依赖的子问题的情况，其中子问题的解决方案可以被重复利用以避免重复计算。
+</code></pre>
+<p>后面将通过实例具体解释。</p>
+<p>7.2 贪心法的例子</p>
+<p>活动选择问题</p>
+<pre><code>问题描述：
+
+    S = &#123;1, 2, … , n&#125;为n 项活动的集合，si、fi分别为活动i的开始和结束时间。
+
+    活动相容指的是两个活动占用时间完全不冲突。即si ≥ fj 或 sj ≥ fi。
+    
+    求最大两两相容的活动集A。
+
+贪心算法：
+
+    挑选过程是多步判断，每步根据“短视”策略进行活动选择。
+
+    策略1：开始时间早的优先
+
+    策略2：占用时间少的优先
+
+    策略3：结束早的优先
+
+验证策略：
+
+    策略1反例：
+
+    策略2反例：
+
+    （策略3为什么正确？只存在这3种策略吗？）
+
+运行实例：
+
+核心：怎么证明该算法对于所有实例都能得到正确的解？
+
+（下一节介绍）
+
+特点：
+
+    (1)贪心法适用于组合优化问题
+
+    (2) 求解过程是多步判断过程，最终的判断序列对应于问题的最优解
+
+    (3) 依据某种“短视的”贪心选择性质判断，性质好坏决定算法的成败
+
+    (4) 贪心法必须进行正确性证明
+
+    (5) 证明贪心法不正确的技巧：举反例
+
+    贪心法的优势：算法简单，时间和空间复杂性低
+
+（没看懂一点）
+</code></pre>
+<p>7.3 贪心算法的正确性证明</p>
+<p>（看了下PPT，感觉正课不如网课）</p>
+<p>数学归纳法</p>
+<pre><code>假设F(n-1)满足目标假设，用F(n-1)证明F(n)，同时证明F(1)也满足目标假设。即可证明假设成立
+</code></pre>
+<p>第一数学归纳法</p>
+<pre><code>适合证明涉及自然数的命题P(n)。
+
+归纳基础：证明P(1)为真（或P(0)为真）
+
+归纳步骤：若对所有n有P(n)为真，证明P(n+1)为真
+</code></pre>
+<p>第二数学归纳法</p>
+<pre><code>适合证明涉及自然数的命题 P(n)。
+
+归纳基础：证明P(1)为真（或P(0)为真）
+
+归纳步骤：若对所有小于n的k有P(k)真，证明 P(n)为真
+（何意啊？？？）
+</code></pre>
+<p>两种归纳法区别：</p>
+<pre><code>图片
+
+在第一数学归纳法中，我们假设命题在 n=k 时成立，并通过这个假设推导出命题在 n=k+1 时成立。而在第二数学归纳法中，我们假设命题在 n=1,2,...,k 都成立，并通过这些假设推导出命题在 n=k+1 时成立。因此，第二数学归纳法使用更多的前提条件，从而在一些情况下比第一数学归纳法更为强大。
+</code></pre>
+<p>算法正确性归纳证明：</p>
+<pre><code>……
+</code></pre>
+<p>活动算法选择的命题：</p>
+<pre><code>命题
+
+    算法Select执行到第k步，选择k项活动
+
+    i1 = 1，i2，……，ik
+
+    根据上述命题：对于任何 k，算法前 k 步的选择都将导致最优解，至多到第n 步将得到问题实例的最优解
+    （这句话又是何意？）
+</code></pre>
+<p>归纳证明：归纳基础</p>
+<pre><code>令 S=&#123;1,2,…,n&#125;是活动集，且f1 ≤ … ≤ fn，k=1, 证明**存在最优解包含活动 1**
+
+（为啥要证这个？？？）
+
+证：
+
+    图片
+
+    任取最优解A， A中活动按截止时间递增排列. 如果A的第一个活动为 j，j ≠1, 用1替换A的活动 j 得到解 A&#39;，即A&#39; = (A−&#123; j &#125;) ∪&#123;1&#125;, 由于 f1 ≤ fj , A&#39; 也是最优解，且含有1。
+
+    （前面没问题，最后一句没看懂，为啥A&#39;也是最优解？）
+</code></pre>
 
   </div>
   <div>
@@ -503,8 +618,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://littlesharkkisskissme.github.io/2022/11/18/%E5%85%B6%E4%BB%96/">
-            https://littlesharkkisskissme.github.io/2022/11/18/%E5%85%B6%E4%BB%96/
+            href="https://littlesharkkisskissme.github.io/2024/04/24/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%83%E7%AB%A0/">
+            https://littlesharkkisskissme.github.io/2024/04/24/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%83%E7%AB%A0/
           </a>
         </p>
         <p><span style="font-weight: bold;"></span>如果您有不同的想法，欢迎留言交流！(<strong>@2089899731qq.com</strong>) <br>文章采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>，转载请注明出处。</p>
@@ -514,29 +629,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2023/04/13/%E8%BF%87%E5%8E%BB%E5%8D%8A%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E8%A7%84%E5%88%92/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">过去半年的总结以及规划 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/11/18/%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/" 
+        href="/2024/04/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%89%E7%AB%A0/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">质数相关算法 </div>
+            <div class="nav-title">计算机组成原理 第三章 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -554,7 +655,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E6%8F%90%E5%8D%87%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87"><span class="toc-text">有关提升运行效率</span></a></li></ol>
+
 </div>
             </main>
             <aside class="right-column">
@@ -568,7 +669,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E6%8F%90%E5%8D%87%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87"><span class="toc-text">有关提升运行效率</span></a></li></ol>
+
     </article>
   
   

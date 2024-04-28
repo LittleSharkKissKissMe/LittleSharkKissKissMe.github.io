@@ -81,7 +81,7 @@
         content="2024-04-24">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-24">
+        content="2024-04-27">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>27</span>
+    <span>29</span>
     <span>文章</span>
   </a>
   <a 
@@ -388,33 +388,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E8%AF%BE%E7%A8%8B/" 
-        title="课程">
-        <div class="tags-list-item">课程</div>
-      </a>
-    
-      <a 
-        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
-        title="服务外包">
-        <div class="tags-list-item">服务外包</div>
-      </a>
-    
-      <a 
         href="/tags/%E6%9D%82%E8%B0%88/" 
         title="杂谈">
         <div class="tags-list-item">杂谈</div>
       </a>
     
       <a 
-        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
-        title="计算机组成原理">
-        <div class="tags-list-item">计算机组成原理</div>
-      </a>
-    
-      <a 
-        href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
-        title="算法分析与设计">
-        <div class="tags-list-item">算法分析与设计</div>
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
       </a>
     
       <a 
@@ -424,9 +406,27 @@
       </a>
     
       <a 
-        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
-        title="文本编辑">
-        <div class="tags-list-item">文本编辑</div>
+        href="/tags/%E8%AF%BE%E7%A8%8B/" 
+        title="课程">
+        <div class="tags-list-item">课程</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
+        title="算法分析与设计">
+        <div class="tags-list-item">算法分析与设计</div>
+      </a>
+    
+      <a 
+        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
+        title="计算机组成原理">
+        <div class="tags-list-item">计算机组成原理</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
+        title="服务外包">
+        <div class="tags-list-item">服务外包</div>
       </a>
     
   </div>
@@ -455,7 +455,7 @@
     
     
       <span class="dot"></span>
-      <span>1.5k 字</span>
+      <span>1.9k 字</span>
     
   </div>
   
@@ -599,6 +599,44 @@
 
     （前面没问题，最后一句没看懂，为啥A&#39;也是最优解？）
 </code></pre>
+<p>……</p>
+<p>（<strong>实际上，贪心算法求的往往是近似解而非最优解。因为贪心算法每次都会选择当前看起来最好的选择，但可能因为这种选择并不是最优的，导致最终结果不一定是全局最优的解。所以实际应用中，它只要能求近似解就行了，没必要纠结最优解怎么来的</strong>）</p>
+<p>7.4 最优装载问题</p>
+<p>问题：n 个集装箱1, 2, … , n 装上轮船，集装箱 i 的重量 wi , 轮船装载重量限制为C, 无体积限制。问如何装使得上船的集装箱最多？不妨设每个箱子的重量 wi ≤ C。</p>
+<p>（实际就是每种集装箱只有1个，要在满足限重的情况下装载尽可能多的箱子）</p>
+<p>（相当于0-1背包问题）</p>
+<p>建模：设 <code>&lt;x1, x2, ... , xn&gt;</code> 表示解向量，xi&#x3D; 0,1。其中xi &#x3D; 1表示当且仅当第 i 个集装箱装上船。</p>
+<pre><code>目标函数：max Xi之和，其中i范围为1-n。（也就是求箱子最多能装几个）
+
+约束条件：WiXi之和 &lt;= C，其中其中i范围为1-n。（满足限重）
+</code></pre>
+<p>算法设计：</p>
+<pre><code>贪心策略：轻者优先
+
+算法设计：按重量从小到大装载……
+</code></pre>
+<p>正确性证明：</p>
+<pre><code>……
+</code></pre>
+<p>归纳步骤证明：</p>
+<pre><code>……
+</code></pre>
+<p>（话说我们的课程有要求证明正确性吗？……）</p>
+<p>另：贪心算法不能求得0-1背包问题的最优解，因为它无法保证尽量将背包装满，部分闲置的背包空间会使每公斤背包空间的价值降低了。</p>
+<p>7.5 最小延迟调度</p>
+<p>问题：</p>
+<p>……</p>
+<p>（正课里没有最小延迟调度，只有多机调度问题，所以先上多机调度）</p>
+<p>7.6 哈夫曼编码</p>
+<p>7.7 单源最短路径</p>
+<p>7.8 最小生成树</p>
+<p>7.9 多机调度</p>
+<p>问题：</p>
+<p>算法设计：</p>
+<pre><code>贪心策略：最长处理时间作业优先
+
+算法设计：……
+</code></pre>
 
   </div>
   <div>
@@ -628,6 +666,20 @@
   </div>
 </article>
 <div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2024/04/27/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">算法分析与设计 第二章 </div>
+          
+        </div>
+      </a>
+    </div>
   
   
     <div class="nav-item-next">
@@ -684,6 +736,16 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-28</div>
+        <a href="/2024/04/28/%E5%A4%A7%E4%BA%8C%E4%B8%8B-%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E6%80%BB%E7%BB%93/"><div class="recent-posts-item-content">大二下-期中考试总结</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-27</div>
+        <a href="/2024/04/27/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第二章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-24</div>
         <a href="/2024/04/24/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%83%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第七章</div></a>
       </div>
@@ -691,16 +753,6 @@
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-22</div>
         <a href="/2024/04/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%89%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第三章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-20</div>
-        <a href="/2024/04/20/%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E4%B8%80%E7%AB%A0/"><div class="recent-posts-item-content">新数据库 第一章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-20</div>
-        <a href="/2024/04/20/4-20-%E6%95%B4%E7%90%86%E6%80%9D%E7%BB%AA/"><div class="recent-posts-item-content">24.4.20 整理思绪</div></a>
       </div>
     
   </div>

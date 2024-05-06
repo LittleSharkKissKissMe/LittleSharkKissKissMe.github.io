@@ -81,7 +81,7 @@
         content="2024-04-24">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-27">
+        content="2024-05-04">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>29</span>
+    <span>32</span>
     <span>文章</span>
   </a>
   <a 
@@ -341,7 +341,7 @@
   <a 
     class="author-tags-count" 
     href="/tags">
-    <span>7</span>
+    <span>8</span>
     <span>标签</span>
   </a>
 </div>
@@ -400,6 +400,12 @@
       </a>
     
       <a 
+        href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
+        title="数字电路与数字逻辑B">
+        <div class="tags-list-item">数字电路与数字逻辑B</div>
+      </a>
+    
+      <a 
         href="/tags/%E7%AE%97%E6%B3%95/" 
         title="算法">
         <div class="tags-list-item">算法</div>
@@ -455,7 +461,7 @@
     
     
       <span class="dot"></span>
-      <span>1.9k 字</span>
+      <span>2.9k 字</span>
     
   </div>
   
@@ -483,9 +489,7 @@
     id="section" 
     class="post-content">
     <p>（最近没什么学习动力，感觉事情一多就啥都不想做。如果是要命的事情可能还会有动力，但是偏偏都是些时间弹性很大的事，唉唉）</p>
-<p>（还有阿B怎么又给我推荐上古老物，天天念叨你那B复古怀旧，死了就自觉滚回棺材里躺好，不要天天恶心活人）</p>
 <p>第七章 贪心算法</p>
-<p>（虽然动态规划还没彻底掌握，但是贪心算法不能再拖了，没学根本没动力做实验的）</p>
 <p>7.1 贪心算法简介</p>
 <p>定义：</p>
 <pre><code>贪心算法（greedy algorithm，又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择，即贪心算法并不从整体最优上加以考虑，它所得出的仅仅是在某种意义上的局部最优解。
@@ -526,7 +530,30 @@
 
     （策略3为什么正确？只存在这3种策略吗？）
 
-运行实例：
+运行实例：……
+
+代码：
+
+    //排序
+    quickSort(s, f, 0, s.size() - 1);
+
+    A[1] = true;
+
+    int j = 0;
+    for (int i = 1; i &lt; n; i++) &#123;
+        if (f[j] &lt;= s[i]) &#123;
+            A[i] = true;
+            j = i;
+        &#125;
+        else &#123;
+            A[i] = false;
+        &#125;
+    &#125;
+
+    1) 令数组s和f分别存储了各活动的起始时间和结束时间，其中f数组是按活动结束的非减序排序的，即：f1≤f2 ≤… ≤fn。
+    2) 数组A用于存储对各活动的选择结果，即：A[i]=true表示活动i被选择，A[i]=false表示活动i未被选择。
+    3) 代码中，选择的思路非常简单：**先排序，后处理冲突**。事实上，j为标准列，i为选择列。也就是j中都是确定选中的活动，而i是要与它进行比较判断的。
+
 
 核心：怎么证明该算法对于所有实例都能得到正确的解？
 
@@ -547,6 +574,124 @@
     贪心法的优势：算法简单，时间和空间复杂性低
 
 （没看懂一点）
+</code></pre>
+<p>单源最短路径问题</p>
+<pre><code>问题描述：离散数学典型问题，直接上代码
+
+代码：
+
+    void Dijkstra(int n, int v, int *dist, int *prev, int **c) &#123;
+
+        bool s[maxint];    // 判断是否已存入该点到S集合中
+
+        //初始化
+        for(int i=1; i&lt;=n; ++i)&#123;
+            dist[i] = c[v][i];
+            s[i] = 0;     // 所有点都未加入集合S
+
+            if(dist[i] == maxint)
+                prev[i] = 0;
+            else
+                prev[i] = v;
+        &#125;
+
+        dist[v] = 0;    
+        s[v] = 1;
+
+        for(int i=2; i&lt;=n; ++i)&#123;
+            int tmp = maxint, u = v;
+                   
+            // 找出当前未使用的点j的dist[j]最小值
+            for(int j=1; j&lt;=n; ++j)
+                if((!s[j]) &amp;&amp; dist[j]&lt;tmp)&#123; //点j未加入集合S，且j到起始节点v的当前最短距离小于之前找到的最小距离tmp
+                    u = j; tmp = dist[j];
+                &#125;
+
+            s[u] = 1;    // 表示u点已加入S集合
+
+            for(int j=1; j&lt;=n; ++j)  // 更新dist
+                if((!s[j]) &amp;&amp; c[u][j]&lt;maxint)&#123;  //点j未加入集合S，且u-j是一条边，则重新计算dist，并更新前驱节点
+
+                    int newdist = dist[u] + c[u][j];
+
+                    if(newdist &lt; dist[j])&#123;
+                        dist[j] = newdist;  prev[j] = u;
+                    &#125;
+                &#125;
+        &#125;
+    &#125;
+
+    说明：
+    1) n为顶点数，顶点v为源；
+    2) c[i][j]表示边(i,j)的权；当c[i][j]为大数时，它不是一条边。
+    3) dist[i]表示从v到i的最短特殊路径长度。
+
+    代码主要做以下几件事：
+        1.从第2个节点开始遍历到第n个节点，遍历过程中，每次选择距离最短的节点加入最短路径节点集合S。
+        2.找出当前未使用的节点u的dist[u]值最小的节点，并将其加入最短路径节点集合S。
+        **3.在未加入最短路径节点集合S中的节点中，更新节点到该节点的距离，并更新该节点的前驱节点。**
+
+优先队列实现代码：
+
+    #include &lt;iostream&gt;
+    #include &lt;vector&gt;
+    #include &lt;queue&gt;
+    #include &lt;limits.h&gt;
+
+    using namespace std;
+
+    #define maxint INT_MAX
+
+    void Dijkstra(int n, int v, vector&lt;int&gt;&amp; dist, vector&lt;int&gt;&amp; prev, vector&lt;vector&lt;int&gt;&gt;&amp; c) &#123;
+        priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq; // 优先队列，按照距离排序
+        //pair对象实际上是一个有序的容器，可以存储两个值，可以是相同类型或不同类型。
+        //这句代码创建了一个优先队列对象pq，元素类型是pair&lt;int, int&gt;，并使用greater&lt;pair&lt;int, int&gt;&gt;作为排序准则，表示距离值小的元素优先级更高。
+        //greater从小到大排序，pair中会以第一个数为基准
+
+        dist.assign(n + 1, maxint);     //连续赋值，初始化dist
+        prev.assign(n + 1, 0);          //连续赋值，初始化prev
+        dist[v] = 0;
+
+        pq.push(make_pair(0, v));
+
+        while (!pq.empty()) &#123;
+            int u = pq.top().second;
+            pq.pop();
+
+            for (int j = 1; j &lt;= n; ++j) &#123;
+                if (c[u][j] &lt; maxint) &#123;
+                    int newdist = dist[u] + c[u][j];
+                    if (newdist &lt; dist[j]) &#123;
+                        dist[j] = newdist;
+                        prev[j] = u;
+                        pq.push(make_pair(dist[j], j)); // 更新距离后将节点加入优先队列
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    int main() &#123;
+        int n = 4; // 图中节点数
+        int v = 1; // 起始节点
+        vector&lt;int&gt; dist(n + 1);
+        vector&lt;int&gt; prev(n + 1);
+        vector&lt;vector&lt;int&gt;&gt; c = &#123;
+            &#123;maxint, maxint, maxint, maxint, maxint&#125;,
+            &#123;maxint, 0, 1, 2, maxint&#125;,
+            &#123;maxint, maxint, 0, maxint, 3&#125;,
+            &#123;maxint, maxint, maxint, 0, 1&#125;,
+            &#123;maxint, maxint, maxint, maxint, 0&#125;
+        &#125;;
+
+        Dijkstra(n, v, dist, prev, c);
+
+        for (int i = 1; i &lt;= n; ++i) &#123;
+            cout &lt;&lt; &quot;Minimum distance from node &quot; &lt;&lt; v &lt;&lt; &quot; to node &quot; &lt;&lt; i &lt;&lt; &quot; is: &quot; &lt;&lt; dist[i] &lt;&lt; endl;
+        &#125;
+
+        return 0;
+    &#125;
 </code></pre>
 <p>7.3 贪心算法的正确性证明</p>
 <p>（看了下PPT，感觉正课不如网课）</p>
@@ -623,10 +768,7 @@
 </code></pre>
 <p>（话说我们的课程有要求证明正确性吗？……）</p>
 <p>另：贪心算法不能求得0-1背包问题的最优解，因为它无法保证尽量将背包装满，部分闲置的背包空间会使每公斤背包空间的价值降低了。</p>
-<p>7.5 最小延迟调度</p>
-<p>问题：</p>
-<p>……</p>
-<p>（正课里没有最小延迟调度，只有多机调度问题，所以先上多机调度）</p>
+<p>7.5 最小延迟调度（课外）</p>
 <p>7.6 哈夫曼编码</p>
 <p>7.7 单源最短路径</p>
 <p>7.8 最小生成树</p>
@@ -736,23 +878,23 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-05-06</div>
+        <a href="/2024/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第五章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-05-05</div>
+        <a href="/2024/05/05/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">数字电路与数字逻辑B 第五章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-30</div>
+        <a href="/2024/04/30/%E6%A8%A1%E6%9D%BF%E7%A4%BA%E8%8C%83/"><div class="recent-posts-item-content">模板示范</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-28</div>
         <a href="/2024/04/28/%E5%A4%A7%E4%BA%8C%E4%B8%8B-%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E6%80%BB%E7%BB%93/"><div class="recent-posts-item-content">大二下-期中考试总结</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-27</div>
-        <a href="/2024/04/27/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第二章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-24</div>
-        <a href="/2024/04/24/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%83%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第七章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-22</div>
-        <a href="/2024/04/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%89%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第三章</div></a>
       </div>
     
   </div>

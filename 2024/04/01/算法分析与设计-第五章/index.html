@@ -81,7 +81,7 @@
         content="2024-04-01">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-27">
+        content="2024-04-29">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>29</span>
+    <span>32</span>
     <span>文章</span>
   </a>
   <a 
@@ -341,7 +341,7 @@
   <a 
     class="author-tags-count" 
     href="/tags">
-    <span>7</span>
+    <span>8</span>
     <span>标签</span>
   </a>
 </div>
@@ -400,6 +400,12 @@
       </a>
     
       <a 
+        href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
+        title="数字电路与数字逻辑B">
+        <div class="tags-list-item">数字电路与数字逻辑B</div>
+      </a>
+    
+      <a 
         href="/tags/%E7%AE%97%E6%B3%95/" 
         title="算法">
         <div class="tags-list-item">算法</div>
@@ -455,7 +461,7 @@
     
     
       <span class="dot"></span>
-      <span>4k 字</span>
+      <span>3.8k 字</span>
     
   </div>
   
@@ -494,46 +500,6 @@
 4.能够手搓代码
 </code></pre>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://www.icourse163.org/course/PKU-1002525003?from=searchPage&amp;outVendor=zw_mooc_pcssjg">https://www.icourse163.org/course/PKU-1002525003?from=searchPage&amp;outVendor=zw_mooc_pcssjg</a>_</p>
-<p>5.2 动态规划算法的例子</p>
-<p>下面给出几个例子</p>
-<p>最短路径问题</p>
-<pre><code>问题：给出指定点集和边集（带权重），求重点到起点的最短路。
-
-暴力算法需要遍历所有路径，显然十分麻烦。考虑用动态规划求解。
-
-那么，如何用所谓的动态规划求解？
-
-a.子问题界定。从后往前推算，即后边界不变，前边界前移。
-
-    图片
-
-    每一步都可以找出当下的最小权重边，只需保证前面所找的全是当时的最小权重边，就能得到最短路长。
-
-b.使用动态规划的必要条件1：满足优化原则（**最优子结构**）。
-
-    **一个最优决策序列的任何子序列本身一定的是相对于子序列的初始和结束状态的最优决策序列。**我的理解是，“最优”对应于上述解题过程中“找出当下的最小权重边”的步骤。“相对于子序列的初始和结束状态的最优决策序列”又是何意？
-
-c.使用动态规划的必要条件2：**重叠子问题**。
-
-    ？？？？？？？？？
-
-d.使用动态规划的必要条件3：无后效性
-
-    ？？？？？？？？？
-</code></pre>
-<p>动态规划的常规步骤：</p>
-<pre><code>1.分析最优解结构
-
-2.建立递归关系
-
-3.计算最优值
-
-    最优值：**问题的最优解对应的数值**，即问题的最优解所具有的最优性质所对应的数值结果
-
-4.构造最优解
-
-    最优解：满足问题约束条件且使得最优值最小或最大的解决方案，**是达到最优值的一种具体方案或解决方法**。
-</code></pre>
 <p>5.3 动态规划算法设计</p>
 <p>动态规划设计要素</p>
 <pre><code>1.问题建模，优化的目标函数是什么？约束条件是什么？ 
@@ -582,23 +548,8 @@ d.使用动态规划的必要条件3：无后效性
 小结
 </code></pre>
 <p>……</p>
-<p>5.4 动态规划算法的递归实现</p>
-<p>这一节较为简单，概括一下就是：</p>
-<p>1.问题：</p>
-<pre><code>动态规划算法的递归实现效率不高，原因在于同一子问题多次重复出现，每次出现都需要重新计算一遍。
-</code></pre>
-<p>2.解决方案：</p>
-<pre><code>采用空间换时间策略，记录每个子问题首次计算结果，后面再用时就直接取值，每个子问题只算一次（打表法）
-</code></pre>
-<p>5.5 动态规划算法的迭代实现</p>
-<p>递归转迭代，是算法进阶的必经之路。（无端）</p>
-<p>迭代的目的就是解决递归中子问题重复出现的问题。实际就是建立一个备忘录，遇到子问题先检查备忘录里有没有记录过这个子问题的解，如果没有再计算并把结果记录在备忘录中。</p>
-<p>代码实现：</p>
-<pre><code>？？？？？？？
-</code></pre>
-<p>5.6 投资问题</p>
-<p>本学期没有出现该章节的相关内容，暂时跳过。</p>
 <p>5.7 背包问题</p>
+<p>（注意，这是背包问题而非0-1背包问题）</p>
 <p>问题概括：在总限重下选择不同重量、不同价值的物品，使得背包物品总价值最大。</p>
 <pre><code>设物品有n种，每种物品的重量和价值分别为 wi , vi . 如果背包的最大重量限制是 b, 每种物品可以放多个
 </code></pre>
@@ -672,6 +623,8 @@ i1(y)=……
     2) c(i,j)=c(i-1,j-1)+1，Xi = Yi
 
     3) c(i,j)=max(c(i-1,j),c(i,j-1))，Xi != Yi
+
+不用具体分类讨论分析尾字母不相等的情况，由于默认可以得到最优解，所以直接比较就行了
 </code></pre>
 <p>4.代码实现，求解最优值</p>
 <pre><code>void LCSLength(int m，int n，char *x，char *y，int **c，int **b)&#123;  
@@ -764,13 +717,19 @@ b[i][j]则需要进一步推断。但其实也不需要。因为我们观察表�
 <pre><code>……
 </code></pre>
 <p>3.建立子问题最优值的递归关系（m(i,j)）</p>
-<pre><code>规划目标……
+<pre><code>m(i,j)表示背包容量为j，可选物品为i, i+1, ……, n时0-1背包的最优解
+
+规划目标……
 
 约束条件……
 
-max&#123; m(i+1,j), m(i+1,j-wi)+vi &#125;，j ≥ wi （比较装入物品i和不装入物品i）
+可以装入物品时：
 
-m(i+1,j)，0 ≤ j &lt; wi（装不下物品i）
+    m(i,j) = max&#123; m(i+1,j), m(i+1,j-wi)+vi &#125;，j ≥ wi （比较装入物品i和不装入物品i）
+
+不可以装入物品时：
+
+    m(i,j) = m(i+1,j)，0 ≤ j &lt; wi（装不下物品i）
 
 特别地，
 
@@ -778,21 +737,30 @@ m(n,j) = vn，j ≥ wn
 
 0，0 ≤ j &lt; wn
 </code></pre>
-<!-- 怎么感觉跟之前学的不太一样？ -->
-
 <p>4.代码实现，求解最优值</p>
 <pre><code>void knapsack(int v[],int *w,int c,int n,int**m)&#123;   
-    int jmax=min(w[n]-1,c);                 //1) 仅可选物品n时，容量为j的子问题的最优值 
-    for(int j=0; j&lt;=jmax; j++)  m[n][j]=0;  //注意j为整数
-    for(int j=w[n]; j&lt;=c; j++)  m[n][j]=v[n];   
+    int jmax=min(w[n]-1,c);                 //1) 仅可选物品n时，容量为j的子问题
+     
+    for(int j=0; j&lt;=jmax; j++)  
+        m[n][j]=0;                          //注意j为整数
+
+    for(int j=w[n]; j&lt;=c; j++)  
+        m[n][j]=v[n];   
 
     for(int i=n-1;i&gt;1;i--) &#123;                //2) 逐步增加物品数至n及容量至c
         jmax=min(w[i]-1,c);                 //仅可选物品i时，容量为j的子问题的最优值 
-        for(int j=0; j&lt;=jmax; j++)   m[i][j]=m[i+1][j];
-        for(int j=w[i]; j&lt;=c; j++)   m[i][j]=max(m[i+1][j], m[i+1][j-w[i]]+v[i]);   
-    &#125; 
+
+        for(int j=0; j&lt;=jmax; j++)   
+            m[i][j]=m[i+1][j];
+
+        for(int j=w[i]; j&lt;=c; j++)   
+            m[i][j]=max(m[i+1][j], m[i+1][j-w[i]]+v[i]);   
+    &#125;
+
     m[1][c]=m[2][c];                        //处理物品1，最后一件的边界情况
-    if(c&gt;=w[1]) m[1][c]=max(m[1][c],m[2][c-w[1]]+v[1]);     
+
+    if(c&gt;=w[1]) 
+        m[1][c]=max(m[1][c],m[2][c-w[1]]+v[1]);     
 &#125;
 
 1) 数组m用于保存子问题的最优值，m[1][c]即为最优值；
@@ -800,6 +768,9 @@ m(n,j) = vn，j ≥ wn
 3) 算法时间复杂度也为：O(nc)，空间复杂度为：O(n²) 
 
 代码思路：
+
+    光看步骤3是可以看懂的，但是到代码就完全不一样了。
+    ？？？？？？
 </code></pre>
 <p>5.代码实现，构造最优解（最长公共子序列）</p>
 <pre><code>int traceback(int **m, int *w, int c, int n, int *x)&#123;    
@@ -828,6 +799,51 @@ m(n,j) = vn，j ≥ wn
     最优值即m(1,10)
 </code></pre>
 <p>5.11 最优二叉搜索树</p>
+<p>问题：给出n个数，构造一颗最优二叉搜索树</p>
+<pre><code>最优二叉搜索树：最优二叉搜索树是一种特殊的二叉搜索树，其中每个节点都包含一个关键字和一个相关联的值。
+
+与普通的二叉搜索树不同，最优二叉搜索树的关键字按照特定的规则进行插入，以使得整个树的搜索操作所需的平均代价最小化。在最优二叉搜索树中，关键字按照升序排列。对于任意节点，其左子树中的所有关键字都小于该节点的关键字，而右子树中的所有关键字都大于该节点的关键字。
+
+通过这种方式构建的二叉搜索树可以最大限度地降低搜索操作的成本。
+</code></pre>
+<p>1.最优子结构性质的证明：</p>
+<pre><code>……
+</code></pre>
+<p>2.递归关系的建立：</p>
+<pre><code>……
+</code></pre>
+<p>3.代码实现，求解最优值：</p>
+<pre><code>……
+</code></pre>
+<p>4.代码实现，构造最优解：</p>
+<pre><code>……
+</code></pre>
+<p>5.12 动态规划的一般步骤（总结）</p>
+<p>大彻大悟的部分在《算法实验》中。</p>
+<p>参考链接：……</p>
+<p>0.明确问题</p>
+<pre><code>……
+</code></pre>
+<p>1.最优子结构性质的证明：</p>
+<pre><code>可以分为直接证明和反证法，过程是相似的。
+
+直接证明：归纳法
+
+    数学归纳法
+
+反证法：
+
+    ……
+</code></pre>
+<p>2.递归关系的建立：</p>
+<pre><code>……
+</code></pre>
+<p>3.代码实现，求解最优值：</p>
+<pre><code>……
+</code></pre>
+<p>4.代码实现，构造最优解：</p>
+<pre><code>……
+</code></pre>
 <!-- 牛魔，2和3看不出区别啊 -->
 
 
@@ -1029,23 +1045,23 @@ i从1到a，j从n到b。
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-05-06</div>
+        <a href="/2024/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第五章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-05-05</div>
+        <a href="/2024/05/05/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">数字电路与数字逻辑B 第五章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-30</div>
+        <a href="/2024/04/30/%E6%A8%A1%E6%9D%BF%E7%A4%BA%E8%8C%83/"><div class="recent-posts-item-content">模板示范</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-28</div>
         <a href="/2024/04/28/%E5%A4%A7%E4%BA%8C%E4%B8%8B-%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E6%80%BB%E7%BB%93/"><div class="recent-posts-item-content">大二下-期中考试总结</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-27</div>
-        <a href="/2024/04/27/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第二章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-24</div>
-        <a href="/2024/04/24/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%83%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第七章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-22</div>
-        <a href="/2024/04/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%89%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第三章</div></a>
       </div>
     
   </div>

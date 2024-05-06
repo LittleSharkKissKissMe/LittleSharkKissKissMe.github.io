@@ -81,7 +81,7 @@
         content="2024-04-16">
       <meta 
         property="og:article:modified_time" 
-        content="2024-04-26">
+        content="2024-05-05">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -89,7 +89,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="课程">
+            content="数字电路与数字逻辑B">
         
       
     
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>29</span>
+    <span>32</span>
     <span>文章</span>
   </a>
   <a 
@@ -341,7 +341,7 @@
   <a 
     class="author-tags-count" 
     href="/tags">
-    <span>7</span>
+    <span>8</span>
     <span>标签</span>
   </a>
 </div>
@@ -400,6 +400,12 @@
       </a>
     
       <a 
+        href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
+        title="数字电路与数字逻辑B">
+        <div class="tags-list-item">数字电路与数字逻辑B</div>
+      </a>
+    
+      <a 
         href="/tags/%E7%AE%97%E6%B3%95/" 
         title="算法">
         <div class="tags-list-item">算法</div>
@@ -455,7 +461,7 @@
     
     
       <span class="dot"></span>
-      <span>2.8k 字</span>
+      <span>3.2k 字</span>
     
   </div>
   
@@ -470,9 +476,9 @@
         
           
           <a 
-            href="/tags/%E8%AF%BE%E7%A8%8B/" 
+            href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
             class="post-meta-link">
-            课程
+            数字电路与数字逻辑B
           </a>
         
       </div>
@@ -865,6 +871,65 @@ N位加法器（实现N位二进制数相加）
 <p>方法：</p>
 <pre><code>利用功能扩展端、树形结构
 </code></pre>
+<p>编码器的位扩展技术：</p>
+<pre><code>利用功能扩展端：
+
+
+
+    图片
+
+树形扩展编码器：
+
+    用三态输出8线-3线优先编码器LS348构成64线-6线编码器
+
+    图片
+
+    1) 三态门？
+    2) 同一时间只有一个芯片起效
+</code></pre>
+<p>译码器的位扩展技术：</p>
+<pre><code>利用使能端：
+
+    图片
+
+矩阵译码器：
+
+    ……
+
+    深化理解：尽管译码器每个输出只有一位，但是其实这一位本身就是一个最小项的表达式，**这表示同时只有一位输出为真！**
+
+显示译码器的位扩展：
+
+    灭零状态：多余的0不显示。如0012.300，实际只显示123，前后4个0都是不显示的
+
+    注意：整数灭零位正接，小数灭零位反接，且整数最低位和小数最高位是不能灭0的。
+</code></pre>
+<p>数据选择器的位扩展技术：</p>
+<pre><code>利用使能端：
+
+    图片
+
+    总结：形如2片8选1扩展16选1，多出的一位接使能端（低8位）、非后接使能端（高8位），输出接或门
+
+树形结构：
+
+    以5片4选1设计一个16选1为例
+
+    图片（图片1号芯片有点问题，应该也是1对1的）
+
+    总结：就是分级输入，前两位为一级，一级4个芯片，后两位为更高一级，一级1个芯片
+
+    （基本原则：输出连输入，编码分级连）
+</code></pre>
+<p>数值比较器的位扩展技术：</p>
+<pre><code>级联法实现多位数值比较：
+
+    图片（左低右高）
+
+并联法实现多位数值比较：
+
+    图片（A=B的输出不连接输入，其他输出连接对应的位数输入）
+</code></pre>
 
   </div>
   <div>
@@ -964,23 +1029,23 @@ N位加法器（实现N位二进制数相加）
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-05-06</div>
+        <a href="/2024/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第五章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-05-05</div>
+        <a href="/2024/05/05/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">数字电路与数字逻辑B 第五章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-04-30</div>
+        <a href="/2024/04/30/%E6%A8%A1%E6%9D%BF%E7%A4%BA%E8%8C%83/"><div class="recent-posts-item-content">模板示范</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-04-28</div>
         <a href="/2024/04/28/%E5%A4%A7%E4%BA%8C%E4%B8%8B-%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E6%80%BB%E7%BB%93/"><div class="recent-posts-item-content">大二下-期中考试总结</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-27</div>
-        <a href="/2024/04/27/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第二章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-24</div>
-        <a href="/2024/04/24/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%83%E7%AB%A0/"><div class="recent-posts-item-content">算法分析与设计 第七章</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-04-22</div>
-        <a href="/2024/04/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%89%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第三章</div></a>
       </div>
     
   </div>

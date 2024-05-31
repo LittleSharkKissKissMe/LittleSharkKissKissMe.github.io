@@ -388,15 +388,21 @@
   <div class="tags-list">
     
       <a 
+        href="/tags/%E6%9D%82%E8%B0%88/" 
+        title="杂谈">
+        <div class="tags-list-item">杂谈</div>
+      </a>
+    
+      <a 
         href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
         title="文本编辑">
         <div class="tags-list-item">文本编辑</div>
       </a>
     
       <a 
-        href="/tags/%E6%9D%82%E8%B0%88/" 
-        title="杂谈">
-        <div class="tags-list-item">杂谈</div>
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
       </a>
     
       <a 
@@ -409,12 +415,6 @@
         href="/tags/%E4%B9%A0%E9%A2%98/" 
         title="习题">
         <div class="tags-list-item">习题</div>
-      </a>
-    
-      <a 
-        href="/tags/%E7%AE%97%E6%B3%95/" 
-        title="算法">
-        <div class="tags-list-item">算法</div>
       </a>
     
       <a 
@@ -473,7 +473,7 @@
     
     
       <span class="dot"></span>
-      <span>2.3k 字</span>
+      <span>2.4k 字</span>
     
   </div>
   
@@ -547,10 +547,11 @@
 <p>须知，排序树只是辅助我们思考的工具，子集树也一样，所以<strong>我们不需要在代码中显式构造排序树或子集树</strong>。</p>
 <p><strong>我们需要实现的是图</strong>。树源于图，有图则有树，心中自有天地。</p>
 <p>如何实现图？邻接矩阵，二维数组。</p>
-<p>当然，解题过程中还需要构造最小堆，这是我们解题的利刃。</p>
+<p>当然，解题过程中还需要构造最小堆。<strong>最小堆的实际作用是实现优先队列，真正给出问题答案的是while循环中的结束条件。</strong></p>
+<p>也就是计算到叶子结点时，会对图进行修改（其实就是对每种走法都比较一遍，保留最优的解法），修改后的最优解用数组v存储。bestc是最优值，数组v是最优解。</p>
 <p>酒与剑，图与堆。此相携也，澄澈通达矣。</p>
 <p>3.如何根据分支限界法进行遍历？</p>
-<p>……</p>
+<p>二重循环，外面从深度开始遍历，里面从横向遍历。</p>
 <p>示例代码（随时更新补充）：</p>
 <p>&#x2F;&#x2F;这是分支限界法中，旅行售货员问题的PPT解法示例<br>#include<iostream><br>#include <vector><br>using namespace std;</p>
 <p>&#x2F;&#x2F;GPT定义的一个最小堆<br>template<class Type><br>class MinHeap {<br>public:<br>    MinHeap(int capacity) : heapSize(0) {<br>        heap.reserve(capacity + 1); &#x2F;&#x2F;存储，heap用向量实现<br>        heap.push_back(Type()); &#x2F;&#x2F;<br>    }</p>

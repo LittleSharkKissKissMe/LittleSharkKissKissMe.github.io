@@ -384,27 +384,27 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
-        title="文本编辑">
-        <div class="tags-list-item">文本编辑</div>
-      </a>
-    
-      <a 
         href="/tags/%E6%9D%82%E8%B0%88/" 
         title="杂谈">
         <div class="tags-list-item">杂谈</div>
       </a>
     
       <a 
-        href="/tags/%E4%B9%A0%E9%A2%98/" 
-        title="习题">
-        <div class="tags-list-item">习题</div>
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
       </a>
     
       <a 
         href="/tags/%E7%AE%97%E6%B3%95/" 
         title="算法">
         <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%B9%A0%E9%A2%98/" 
+        title="习题">
+        <div class="tags-list-item">习题</div>
       </a>
     
       <a 
@@ -469,7 +469,7 @@
     
     
       <span class="dot"></span>
-      <span>2.7k 字</span>
+      <span>2.9k 字</span>
     
   </div>
   
@@ -748,23 +748,26 @@ void Traceback( int i, int j, int **s)&#123;
 
     最优值代码？
 
+        算法时间复杂度为O(nc), 空间复杂度为O(n^2)
+
+        空间复杂度可以结合表格分析理解
+
         void knapsack(int v[],int *w,int c,int n,int**m)&#123;  
 
             int jmax = min(w[n]-1,c); 
-            //1) 仅可选物品n时，容量为j的子问题的最优值
-            //芝士何意啊？ 
+            //jmax表示一个区分状态的临界值，剩余容量j超过jmax时，可以把当前物品装进背包，否则只能舍弃
 
             for(int j=0; j&lt;=jmax; j++)
             //注意j为整数
                 m[n][j]=0; 
-            //芝士何意啊？
+            //考虑第n件物品时，如果剩余背包容量过小，则最优值初始化为0
 
             for(int j=w[n]; j&lt;=c; j++)  
                 m[n][j]=v[n];   
-            //芝油士何意啊？
+            //考虑第n件物品时，如果剩余背包容量足够，则直接将其直接装进背包
 
-            for(int i=n-1;i&gt;1;i--) &#123; 
-            //2) 逐步增加物品数至n及容量至c
+            for(int i=n-1; i&gt;1; i--) &#123; 
+            //逐步增加物品数至n及容量至c
 
                 jmax=min(w[i]-1,c); 
                 //仅可选物品i时，容量为j的子问题的最优值 
@@ -776,14 +779,60 @@ void Traceback( int i, int j, int **s)&#123;
                     m[i][j] = max(m[i+1][j], m[i+1][j-w[i]]+v[i]);   
             &#125; 
 
-            m[1][c]=m[2][c]; 
+            m[1][c] = m[2][c]; 
             //处理物品1，最后一件的边界情况
 
-            if(c&gt;=w[1]) 
-                m[1][c]=max(m[1][c],m[2][c-w[1]]+v[1]);     
+            if(c &gt;= w[1]) 
+                m[1][c]=max(m[1][c], m[2][c-w[1]]+v[1]);     
         &#125; 
 
     最优解代码？
+
+        int traceback(int **m, int *w, int c, int n, int *x)&#123;
+
+            for(int i=1; i&lt;n; i++) &#123;
+
+                if(m[i][c]==m[i+1][c])  
+                    x[i]=0;   //二者相等说明物品i不装入
+                else&#123; 
+                    x[i]=1;   
+                    c= c- w[i];  
+                &#125;
+
+                x[n]=(m[n][c]) ? 1 : 0;     
+            &#125;  
+        &#125; 
+
+
+    表格分析：
+
+        其实只要搞清楚i和j的含义，表格可以现场手搓的（
+
+4.最优二叉搜索树
+
+    基础知识：
+
+
+
+    问题描述：
+
+
+
+    最优子结构？
+
+
+
+    递推结构？
+
+
+
+    最优值代码？
+
+
+
+    最优解代码？
+
+        
 </code></pre>
 
   </div>

@@ -18,7 +18,7 @@
   <link 
     rel="icon" 
     href="/">
-  <title>算法分析与设计 第三章</title>
+  <title>算法设计与分析 第六章</title>
   <style type="text/css">
     .fullscreenvideo {
         position: absolute;
@@ -59,12 +59,12 @@
     
       <meta 
         property="og:title" 
-        content="算法分析与设计 第三章">
+        content="算法设计与分析 第六章">
     
     
       <meta 
         property="og:url" 
-        content="https://littlesharkkisskissme.github.io/2024/04/01/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%94%E7%AB%A0/index.html">
+        content="https://littlesharkkisskissme.github.io/2024/05/20/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E5%85%AD%E7%AB%A0/index.html">
     
     
       <meta 
@@ -78,7 +78,7 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2024-04-01">
+        content="2024-05-20">
       <meta 
         property="og:article:modified_time" 
         content="2024-06-02">
@@ -89,7 +89,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="算法分析与设计">
+            content="算法设计与分析">
         
       
     
@@ -459,21 +459,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      算法分析与设计 第三章
+      算法设计与分析 第六章
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2024-04-01T01:13:48.000Z">
+    <time datetime="2024-05-20T02:25:37.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2024-04-01</span>
+      <span>2024-05-20</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>3.7k 字</span>
+      <span>3.2k 字</span>
     
   </div>
   
@@ -488,9 +488,9 @@
         
           
           <a 
-            href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
+            href="/tags/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" 
             class="post-meta-link">
-            算法分析与设计
+            算法设计与分析
           </a>
         
       </div>
@@ -500,456 +500,232 @@
   <div 
     id="section" 
     class="post-content">
-    <p>第三章 动态规划</p>
-<p>3.1 概述</p>
-<p>本篇将从动态规划开始，梳理章节脉络，整理知识点，同时提供例题。</p>
-<p>关于动态规划算法，需要实现的学习目标有：</p>
-<pre><code>1.什么是动态规划
+    <p>第六章 分支限界法</p>
+<p>本章将以实验例题的形式展开。</p>
+<p>问题描述：有n个工人和n个工作。任何工人都可以被分配执行任何工作，所产生的成本可能会因工作分配的不同而有所不同。要求执行所有作业时，为每个作业分配一个工人，为每个工人分配一个作业，以使分配的总成本最小化。</p>
+<p>问题量化：设二维数组A[n][n]，例如A[3][2]代表第3个工人分配到第2个任务所需时间。二维数组x[n][n]。例如x[3][2]表示第3个工人对第2个任务的选择情况，1为选中，0为不选中。</p>
+<p>规划目标：min{求和A[i][i]*x[i][i]}。</p>
+<p>约束条件：对于任意的i，求和x[i][j]&#x3D;1，j范围为1到n。这表示每个工作只能被一个工人选中。对于任意的j，求和x[i][j]&#x3D;1，i范围为1到n。这表示每个工人只能选一项工作。</p>
+<p><strong>构造解空间的区分</strong>：这个问题中，选择<strong>排列树</strong>。（常用的总共也就子集树、排序树这两种树，树选对了后面都一样的）</p>
+<pre><code>其实构造完解空间后就很简单了，因为排列树的这类问题，本质上不同的仅仅是剪枝策略和约束条件，基本过程都是相同的。
 
-2.如何用动态规划解题
+子集树也一样。
 
-3.动态规划的应用场合
+解空间是子集树的问题：选择的过程是无序且不可比较的
 
-4.能够手搓代码
+    时间复杂度为O(2^n)，也就是遍历所有子集所需时间
+
+    0-1背包问题、装载问题、最大团问题（目标是找顶点集合，这些顶点无序）
+
+    **这里可以给最大团问题的介绍加个链接？关键词：完全子图**
+
+解空间是排序树的问题：节点状态是有序的，具有明确的顺序关系
+
+    时间复杂度为O(n!)，也就是遍历所有可能的排列所需时间
+
+    单源最短路径问题、旅行售货员问题、指派问题（工人分配任务）
 </code></pre>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://www.icourse163.org/course/PKU-1002525003?from=searchPage&amp;outVendor=zw_mooc_pcssjg">https://www.icourse163.org/course/PKU-1002525003?from=searchPage&amp;outVendor=zw_mooc_pcssjg</a>_</p>
-<p>3.3 动态规划算法设计</p>
-<p>动态规划设计要素</p>
-<pre><code>1.问题建模，优化的目标函数是什么？约束条件是什么？ 
+<p><strong>常见的两种分支限界法</strong>：队列法和优先队列法</p>
+<pre><code>队列法：
 
-2.问题的优化函数值与子问题的优化函数值存在着什么依赖关系？ (递推方程)
+优先队列法：
 
-3.如何划分子问题（边界）？
-
-4.是否满足优化原则？
-
-5.最小子问题怎样界定？其优化函数值，即初值等于什么？
+由于时间复杂度的不同，**一般情况下，子集树可能会采用优先队列式分支限界法，而排列树则可能会采用队列式分支限界法**。
 </code></pre>
-<p>矩阵链相乘</p>
-<pre><code>问题：
+<p><strong>优化：剪枝</strong></p>
+<pre><code>上界函数:
 
-    设 A1, A2 , … , An 为矩阵序列，Ai 为 Pi-1 × Pi 阶矩阵，i = 1, 2, … , n.。试确定矩阵的乘法顺序，使得元素相乘的总次数最少。
-
-算法设计：
-
-    穷举法：
-
-        图片
-    
-        过程略。
-        
-        时间复杂度为Ω(4^n/n^1.5)
-
-    动态规划：
-
-        时间复杂度为O(n^3)
-
-        空间复杂度为O(n^2)
-
-        矩阵A为i行j列，矩阵B为j行k列，得每个元素做j次乘法，总乘法次数为i\*j\*k。
-
-        假设最后一次相乘发生在矩阵 k （与上文k无关）的位置，即 Ai ..j = Ai ..k * Ak+1..j。Ai..j最优运算次数依赖于 Ai..k与 Ak+1..j 的最优运算次数。
-
-        设`m[i,j]`为得到 Ai ..j 的最小相乘次数。那么可以得到递推式：
-
-        图片
-
-        根据 Ai ..j = Ai ..k * Ak+1..j，三个多项式代表的含义分别为：得到 Ai ..k 的最小相乘次数，得到得到 Ak+1 ..j 的最小相乘次数， Ai ..k 和 Ak+1 ..j 相乘本身的相乘次数。该问题满足优化原则。
-
-        那么剩下的问题是，如何确定k的值，能够使得相乘次数最小？
-
-小结
+……
 </code></pre>
-<p>……</p>
-<p>3.7 背包问题</p>
-<p>（注意，这是背包问题而非0-1背包问题）</p>
-<p>问题概括：在总限重下选择不同重量、不同价值的物品，使得背包物品总价值最大。</p>
-<pre><code>设物品有n种，每种物品的重量和价值分别为 wi , vi . 如果背包的最大重量限制是 b, 每种物品可以放多个
-</code></pre>
-<p>建模：</p>
-<pre><code>假如得到了该问题的最终解，其形式为是`&lt;x1, x2,..., xn&gt;`，其中 xi 是装入背包的第 i 种物品个数
-
-（没打数学公式，只是简单地表达一下）
-
-a.目标函数：max&#123;xi*vi之和&#125;，i范围为`[1,n]`，也就是总价值最大
-
-b.约束条件：&#123;wi*xi之和&#125; &lt;= b，也就是总重不超过限重
-
-线性整数规划：由线性条件约束的线性函数取最大或最小的问题
-</code></pre>
-<p>子问题界定和计算顺序：</p>
-<p>a.子问题界定：由参数 k 和 y 界定。</p>
-<pre><code>k：考虑对物品1, 2, ... , k 的选择
-
-y：背包总重量不超过 y
-
-**这里说明一下为什么是“考虑”对物品1, 2, ... , k 的选择，而非假设“已经”选择的物品是1, 2, ... , k。**首先子问题形式要与主问题对应，主问题中，我们是在1, 2, ... , n中进行挑选，而非一定要选中某几种，“考虑”才是主问题求解时的状况。其次，如果假设“已经”选择的物品是1, 2, ... , k，这实际上是假设问题的解，而非在假设某个问题。界定子问题时要注意区分。
-</code></pre>
-<p>b.子问题的计算顺序</p>
-<pre><code>k从1到n遍历。对于给定的k，y从1到b遍历。
-
-优化函数的递推方程：
-
-假设Fk(y)，意义为装前 k 种物品, 总重不超过 y, 背包达到的最大价值。
-
-Fk(y) = max&#123;Fk-1(y) , Fk(y - wk) + vk&#125;
-
-max中比较的两个多项式，前者是直接不考虑装第k种物品，后者是选择装1个第k种物品。
-
-标记函数：
-
-ik(y)=&#123;&#125;
-
-i1(y)=……
-
-图片
-</code></pre>
-<p>何意啊？</p>
-<p>实例……</p>
-<p>追踪解……</p>
-<p>时间复杂度：O(nb)</p>
-<p>背包问题推广：0-1背包、多背包、二维背包……</p>
-<p>呃呃，只看懂了一小点？</p>
-<p>3.8 最长公共子序列</p>
-<p>首先，想要使用动态规划，要证明该问题满足几个前提条件。</p>
-<p>1.最优子结构性质的证明</p>
-<pre><code>根据末尾字母的比较，得出三点结论。（后面有，这里略过）
-
-2个序列的最长公共子序列包含了这2个序列的前缀的最长公共子序列。因此最长公共子序列问题具有最优子结构性质
-
-前缀：序列的前缀指的是序列的一个连续的子序列，这个子序列是从序列的开头开始一直延伸到指定位置的部分序列。例如，对于序列 A = &#123;1, 2, 3, 4&#125;，它的前缀包括：&#123;1&#125;，&#123;1, 2&#125;，&#123;1, 2, 3&#125;，&#123;1, 2, 3, 4&#125;。
-
-这句话的意思是，把序列前缀的最长公共子序列看作该问题的子问题，那么子问题的最优解包含在原问题的最优解当中，所以具有最优子结构性质
-
-因此可以使用动态规划
-</code></pre>
-<p>2.子问题的递归结构及子问题的重叠性质</p>
-<pre><code>……
-</code></pre>
-<p>3.建立子问题最优值的递归关系</p>
-<pre><code>c(i,j)表示序列X的前i位和序列Y的前j位的**最长公共子序列的长度**。
-
-递归共有3种情况：
-
-    1) 0，任意序列为空
-
-    2) c(i,j)=c(i-1,j-1)+1，Xi = Yi
-
-    3) c(i,j)=max(c(i-1,j),c(i,j-1))，Xi != Yi
-
-不用具体分类讨论分析尾字母不相等的情况，由于默认可以得到最优解，所以直接比较就行了
-</code></pre>
-<p>4.代码实现，求解最优值</p>
-<pre><code>void LCSLength(int m，int n，char *x，char *y，int **c，int **b)&#123;  
-   int i，j;
-   for (i = 1; i &lt;= m; i++) c[i][0] = 0;    //处理j=0的情况
-   for (i = 1; i &lt;= n; i++) c[0][i] = 0;    //处理i=0的情况
-   for (i = 1; i &lt;= m; i++)                 //处理i,j均不等于0的情况
-      for (j = 1; j &lt;= n; j++)&#123;
-        if (x[i]==y[j]) &#123; 
-            c[i][j]=c[i-1][j-1]+1; b[i][j]=1; 
-        &#125;
-        else if (c[i-1][j]&gt;=c[i][j-1]) &#123; 
-            c[i][j]=c[i-1][j]; b[i][j]=2; 
-        &#125;
-        else &#123; 
-            c[i][j]=c[i][j-1]; b[i][j]=3; 
-        &#125;
-      &#125;
-&#125;
-
-代码思路：
-    先进行两轮循环，分别处理j=0和i=0的情况（对应表格里第一行和第一列）；
-    再对i和j进行二重循环遍历，由于i和j为0的情况已经处理过了，所以直接从1开始；
-    循环过程中，根据三种情况进行判断：
-        1) 末尾字母相等。c[i][j]=c[i-1][j-1]+1; b[i][j]=1; 
-        2) 末尾字母不相等，且c[i-1] &gt;= c[j-1]。c[i][j]=c[i-1][j]; b[i][j]=2; 
-        3) 末尾字母不相等，且c[i-1] &lt; c[j-1]。c[i][j]=c[i][j-1]; b[i][j]=3; 
-
-这里出现了一个关键数组：b[i][j]。数组b[i][j]用于保存c[i][j]是由哪个子问题求解得到的。这一点非常关键，后续会用来构造最优解
-
-1) 当b[i][j]=1时，表示Xi和Yj的最长公共子序列为Xi-1和Yj-1的最长公共子序列加上xi组成；
-2) 当b[i][j]=2时，表示Xi和Yj的最长公共子序列与Xi-1和Yj的最长公共子序列相同；
-3) 当b[i][j]=3时，表示Xi和Yj的最长公共子序列与Xi-和Yj-1的最长公共子序列相同；
-</code></pre>
-<p>5.代码实现，构造最优解（最长公共子序列）</p>
-<pre><code>void LCS(int i，int j，char *x，int **b)&#123;
-    if (i ==0 || j==0) return;
-    if (b[i][j]== 1)&#123; 
-        LCS(i-1，j-1，x，b); cout&lt;&lt;x[i];
-    &#125; else if (b[i][j]== 2) 
-        LCS(i-1，j，x，b);
-    else 
-        LCS(i，j-1，x，b);
-&#125;
-
-代码思路：
-    **递归求解**
-    先处理i或j为0的情况。直接返回。
-    再判断b[i][j]的值。
-    1) 为1。说明这个位置增加了末尾字母。因此递归i-1和j-1，输出x[i]。
-    2) 为2。说明这个位置没增加。递归i-1。
-    3) 为3。说明这个位置没增加。递归j-1。
-
-1) 当b[i][j]=1时，表示Xi和Yj的最长公共子序列为Xi-1和Yj-1的最长公共子序列加上xi组成；
-2) 当b[i][j]=2时，表示Xi和Yj的最长公共子序列与Xi-1和Yj的最长公共子序列相同；
-3) 当b[i][j]=3时，表示Xi和Yj的最长公共子序列与Xi和Yj-1的最长公共子序列相同；
-4) LCS算法的时间复杂度为：O(m+n)。
-</code></pre>
-<p>6.表格解析</p>
-<pre><code>图片
-
-注意，这里的表格实际有两个，一个用来**计算最优值**，一个用来求解**最优解**。
-
-c[i][j]的意义上文已经给出，不多赘述。填表时手算（？）即可。注意0也要考虑进去，因为属于递归中的第一种情况。
-
-b[i][j]则需要进一步推断。但其实也不需要。因为我们观察表格可以发现，b[i][j]值的变化实际上与c[i][j]有关。1表示末尾字母相同，c[i][j]长度增加（因为加上了Xi，当然你也可以说是Yi）。
-
-2和3要注意一下，因为代码里面把c[i-1][j]&gt;=c[i][j-1]放进了b[i][j]为2的条件中（注意&gt;=），所以末尾字母不相等时，如果子序列i去掉1位和子序列j去掉1位时，得到的公共子序列一样长，那么这种情况还是让b[i][j]=2的。除非去掉i一位后得到的c[i][j]减小了，否则b[i][j]就不会等于3。
-
-例如：X=&#123;1,2,3&#125;,Y=&#123;1,3&#125;，i=1,j=2。
-
-    此时i序列：&#123;1&#125;
-
-    此时j序列：&#123;1,3&#125;
-
-    如果i-1, c[i-1][j]就变成0了，j-1却没影响，仍然是1，最后c[i-1][j]&lt;c[i][j-1]。所以这时才能让b[i][j] = 3。
-</code></pre>
-<p>3.9 凸多边形最优三角剖分</p>
-<p>问题说明：</p>
-<pre><code>……
-</code></pre>
-<p>3.10 0-1背包问题</p>
-<p>问题：给定n种物品和一背包。物品i的重量是wi，价值为vi，背包的容量为c。如何选择装入背包的物品，使得装入背包中物品的总价值最大? </p>
-<p>1.最优子结构性质的证明</p>
-<pre><code>反证法
-
-？？？
-</code></pre>
-<p>2.子问题的递归结构及子问题的重叠性质</p>
-<pre><code>……
-</code></pre>
-<p>3.建立子问题最优值的递归关系（m(i,j)）</p>
-<pre><code>m(i,j)表示背包容量为j，可选物品为i, i+1, ……, n时0-1背包的最优解
-
-规划目标……
-
-约束条件……
-
-可以装入物品时：
-
-    m(i,j) = max&#123; m(i+1,j), m(i+1,j-wi)+vi &#125;，j ≥ wi （比较装入物品i和不装入物品i）
-
-不可以装入物品时：
-
-    m(i,j) = m(i+1,j)，0 ≤ j &lt; wi（装不下物品i）
-
-特别地，
-
-m(n,j) = vn，j ≥ wn
-
-0，0 ≤ j &lt; wn
-</code></pre>
-<p>4.代码实现，求解最优值</p>
-<pre><code>void knapsack(int v[],int *w,int c,int n,int**m)&#123;   
-    int jmax=min(w[n]-1,c);                 //1) 仅可选物品n时，容量为j的子问题
-     
-    for(int j=0; j&lt;=jmax; j++)  
-        m[n][j]=0;                          //注意j为整数
-
-    for(int j=w[n]; j&lt;=c; j++)  
-        m[n][j]=v[n];   
-
-    for(int i=n-1;i&gt;1;i--) &#123;                //2) 逐步增加物品数至n及容量至c
-        jmax=min(w[i]-1,c);                 //仅可选物品i时，容量为j的子问题的最优值 
-
-        for(int j=0; j&lt;=jmax; j++)   
-            m[i][j]=m[i+1][j];
-
-        for(int j=w[i]; j&lt;=c; j++)   
-            m[i][j]=max(m[i+1][j], m[i+1][j-w[i]]+v[i]);   
+<p>直接从指派问题入手似乎有些困难，我们可以先从已有案例旅行售货员入手。</p>
+<p>问题描述：某售货员要到若干城市去推销商品，已知各城市之间的路程(或旅费)。他要选定一条从驻地出发，经过每个城市一遍，最后回到驻地的路线，使总的路程（或总旅费）最小。</p>
+<p>问题分析：分支限界法，排序树，优先队列</p>
+<p>接下来是最关键也是最困难的步骤。把思路转换为代码。</p>
+<p>1.如何<strong>把图转换为可存储的数据结构</strong>？</p>
+<p>自然想到：二维数组，存储各个顶点以及它们的对应距离</p>
+<p>2.<strong>如何构造排序树、最小堆</strong>？</p>
+<p>首先要分清楚什么是树，什么是最小堆，因为有点抽象，这两个东西很容易搞混。实际上，最小堆是我们<strong>解题</strong>时有关扩展节点的概念，排序树是一开始就已经定好的一棵树。两者完全不同。</p>
+<p>如何用代码实现排序树？</p>
+<p>须知，排序树只是辅助我们思考的工具，子集树也一样，所以<strong>我们不需要在代码中显式构造排序树或子集树</strong>。</p>
+<p><strong>我们需要实现的是图</strong>。树源于图，有图则有树，心中自有天地。</p>
+<p>如何实现图？邻接矩阵，二维数组。</p>
+<p>当然，解题过程中还需要构造最小堆。<strong>最小堆的实际作用是实现优先队列，真正给出问题答案的是while循环中的结束条件。</strong></p>
+<p><strong>而优先队列C++有内置，不用自己手搓。</strong></p>
+<p>计算到叶子结点时，会对图进行修改（其实就是对每种走法都比较一遍，保留最优的解法），修改后的最优解用数组v存储。bestc是最优值，数组v是最优解。</p>
+<p><em>酒与剑，图与堆。此相携也，澄澈通达矣。</em></p>
+<p>3.如何根据分支限界法进行遍历？</p>
+<p>二重循环，外面从深度开始遍历，里面从横向遍历。</p>
+<p>示例代码（随时更新补充）：</p>
+<p>&#x2F;&#x2F;这是分支限界法中，旅行售货员问题的PPT解法示例<br>#include<iostream><br>#include <vector><br>using namespace std;</p>
+<p>&#x2F;&#x2F;GPT定义的一个最小堆<br>template<class Type><br>class MinHeap {<br>public:<br>    MinHeap(int capacity) : heapSize(0) {<br>        heap.reserve(capacity + 1); &#x2F;&#x2F;存储，heap用向量实现<br>        heap.push_back(Type()); &#x2F;&#x2F;<br>    }</p>
+<pre><code>void Insert(Type element) &#123;
+    heap.push_back(element);
+    heapSize++;
+    int i = heapSize;
+    while (i &gt; 1 &amp;&amp; heap[i / 2] &gt; heap[i]) &#123; //冒泡
+        swap(heap[i], heap[i / 2]);
+        i /= 2;
     &#125;
-
-    m[1][c]=m[2][c];                        //处理物品1，最后一件的边界情况
-
-    if(c&gt;=w[1]) 
-        m[1][c]=max(m[1][c],m[2][c-w[1]]+v[1]);     
 &#125;
 
-1) 数组m用于保存子问题的最优值，m[1][c]即为最优值；
-2) 根据m[i][c]和m[i+1][c]的大小关系可判断物品i是否装入；
-3) 算法时间复杂度也为：O(nc)，空间复杂度为：O(n²) 
-
-代码思路：
-
-    光看步骤3是可以看懂的，但是到代码就完全不一样了。
-    ？？？？？？
-</code></pre>
-<p>5.代码实现，构造最优解（最长公共子序列）</p>
-<pre><code>int traceback(int **m, int *w, int c, int n, int *x)&#123;    
-    for(int i=1; i&lt;n; i++) &#123;     
-        if(m[i][c]==m[i+1][c])  
-            x[i]=0;   //二者相等说明物品i不装入
-        else&#123; 
-            x[i]=1;   
-            c= c- w[i];  
-        &#125;   
-        x[n]=(m[n][c])?1:0;     
-    &#125;  
+Type DeleteMin() &#123;
+    if (heapSize == 0) throw &quot;Heap is empty!&quot;;
+    Type minElement = heap[1];
+    heap[1] = heap[heapSize];
+    heapSize--;
+    PercolateDown(1);
+    return minElement;
 &#125;
 
-这里用了X[i]辅助
-
-代码思路：
+bool IsEmpty() const &#123;
+    return heapSize == 0;
+&#125;
 </code></pre>
-<p>6.表格解析</p>
-<pre><code>图片
-
-例：n=5, c=10, w=&#123;2, 2, 6, 5, 4&#125;, v=&#123;6, 3, 5, 4, 6&#125;
-
-    m(i, j)是背包容量为j，可选择物品为i，i+1，…，n时0-1背包问题的最优值。
-
-    最优值即m(1,10)
+<p>private:<br>    vector<Type> heap;<br>    int heapSize;</p>
+<pre><code>void PercolateDown(int i) &#123; //储存
+    int child;
+    Type tmp = move(heap[i]);
+    while (i * 2 &lt;= heapSize) &#123;
+        child = i * 2;
+        if (child != heapSize &amp;&amp; heap[child + 1] &lt; heap[child])
+            child++;
+        if (heap[child] &lt; tmp)
+            heap[i] = move(heap[child]);
+        else
+            break;
+        i = child;
+    &#125;
+    heap[i] = move(tmp);
+&#125;
 </code></pre>
-<p>3.11 最优二叉搜索树</p>
-<p>问题：给出n个数，构造一颗最优二叉搜索树</p>
-<pre><code>最优二叉搜索树：最优二叉搜索树是一种特殊的二叉搜索树，其中每个节点都包含一个关键字和一个相关联的值。
+<p>};</p>
+<p>&#x2F;&#x2F;这是在定义整个函数<br>template <class Type><br>class  Traveling {<br>    friend void main(void);<br>public:<br>    Type BBTSP(void);&#x2F;&#x2F;核心函数<br>private:<br>    int n; &#x2F;&#x2F;顶点数<br>    Type** a, &#x2F;&#x2F;邻接矩阵<br>        NoEdge, &#x2F;&#x2F;无边标志<br>        cc, &#x2F;&#x2F;当前费用<br>        bestc; &#x2F;&#x2F;当前最小费用<br>};</p>
+<p>&#x2F;&#x2F;这是在定义最小堆的节点（排序树的节点）<br>template <class Type><br>class MinHeapNode {<br>    friend Traveling<Type>;<br>public:<br>    operator Type() const { return cost; }<br>private:<br>    int lcost; &#x2F;&#x2F;子树费用的下界<br>    int cc; &#x2F;&#x2F;当前费用<br>    int rcost; &#x2F;&#x2F;x[s:n-1]中顶点最小出边费用和<br>    int s; &#x2F;&#x2F;根节点到当前节点的路径为x[0:s]<br>    int *x; &#x2F;&#x2F;需要进一步搜索的顶点是x[s+1:n-1]<br>};</p>
+<p>template<class Type><br>int BBTSP(int v[]) {&#x2F;&#x2F;优先队列式分支限界法</p>
+<pre><code>MinHeap&lt;MinHeapNode&lt;Type&gt;&gt; H(1000);
+int* MinOut = new int[n + 1]; //最小出边费用
+int MinSum = 0;//最小出边费用总和
 
-与普通的二叉搜索树不同，最优二叉搜索树的关键字按照特定的规则进行插入，以使得整个树的搜索操作所需的平均代价最小化。在最优二叉搜索树中，关键字按照升序排列。对于任意节点，其左子树中的所有关键字都小于该节点的关键字，而右子树中的所有关键字都大于该节点的关键字。
+for (int i = 1; i &lt;= n; i++) &#123;
+    int Min = NoEdge;
 
-通过这种方式构建的二叉搜索树可以最大限度地降低搜索操作的成本。
+    for (int j = 1; j &lt;= n; j++)
+        if (a[i][j] != NoEdge &amp;&amp; (a[i][j] &lt; Min || Min == NoEdge))
+            Min = a[i][j]; /*更新当前最小值*/
+
+    if (Min == NoEdge) return NoEdge;//无回路
+
+    MinOut[i] = Min; /*顶点i的最小出边费用*/
+    MinSum += Min; /*最小出边费用的总和*/
+&#125;
+
+MinHeapNode&lt;Type&gt; E; //E是最小堆的一个节点
+E.x = new int[n];
+
+for (i = 0; i &lt; n; i++)
+    E-&gt;x[i] = i + 1;
+
+E.s = 0;
+E.cc = 0;
+E.rcost = MinSum;
+
+int bestc = NoEdge; //记录当前最小值
+
+while (E.s &lt; n - 1) &#123;//搜索排列空间树，非叶结点
+
+    if (E.s == n - 2) &#123;//当前扩展结点是叶结点的父结点
+        if (a[E.x[n - 2]][E.x[n - 1]] != NoEdge &amp;&amp; a[E.x[n - 1]][1] != NoEdge &amp;&amp;
+            (E.cc + a[E.x[n - 2]][E.x[n - 1]] + a[E.x[n - 1]][1] &lt; bestc || bestc == NoEdge)) &#123;
+            //if成立条件：两条边都存在，且(路径费用小于已知最小费用/bestc是无边标志)
+
+            //在给定的代码中，E.cc 表示当前路径的费用，a[E.x[n - 2]][E.x[n - 1]] 表示从顶点 E.x[n - 2] 到 E.x[n - 1] 的边的费用，
+            //a[E.x[n - 1]][1] 表示从顶点 E.x[n - 1] 到起始顶点1的边的费用，bestc 表示当前已知的最小费用。
+            //因此，条件判断表达式 E.cc + a[E.x[n - 2]][E.x[n - 1]] + a[E.x[n - 1]][1] &lt; bestc 可以用来判断当前路径加上从倒数第二个顶点到倒数第一个顶点再到起始顶点1的费用是否小于当前已知的最小费用 bestc。
+            //如果是的话，就更新 bestc 为这条路径的费用总和。这样，通过判断条件来不断更新最小费用，可以找到满足条件的最优路径。
+
+            //我明白了，因为当前节点是倒数第二个节点，所以之前的费用已经计算出了，可以直接使用，
+            //所以只需倒数第二个顶点到倒数第一个顶点再到起始顶点1，就完成了一次完整的旅游。
+
+            bestc = E.cc + a[E.x[n - 2]][E.x[n - 1]] + a[E.x[n - 1]][1];
+            E.cc = bestc;
+            E.lcost = bestc;
+            E.s++;
+            E.next = NULL;
+            Insert(E);
+        &#125;
+        else
+            delete[] E.x;//该页节点不满足条件舍弃扩展结点 
+    &#125;
+    else &#123;
+        for (i = E.s + 1; i &lt; n; i++)
+            if (a[E.x[E.s]][E.x[i]] != NoEdge) &#123;
+                int cc = E.cc + a[E.x[E.s]][E.x[i]];
+                int rcost = E.rcost - MinOut[E.x[E.s]];
+                int b = cc + rcost;
+                if (b &lt; bestc || bestc == NoEdge) &#123;
+                    MinHeapNode&lt;Type&gt;  N;
+                    N.x = new int[n];
+                    //下面将为N赋值并插入到最小堆中
+                    for (int j = 0; j &lt; n; j++) N.x[j] = E.x[j];
+                    N.x[E.s + 1] = E.x[i];
+                    N.x[i] = E.x[E.s + 1];/*添加当前路径*/
+                    N.cc = cc; /*更新当前路径距离*/
+                    N.s = E.s + 1; N.lcost = b; /*更新当前节点和当前下界*/
+                    N.rcost = rcost;
+                    Insert(N);
+                &#125;
+            &#125;
+        delete[] E.x;
+    &#125;//完成结点扩展
+    try &#123; H.DeleteMin(E) &#125;
+    catch (OutOfBounds) break;
+&#125; //搜索排列空间树while循环结束处
+if (bestc == NoEdge)  return NoEdge;//无回路
+
+for (i = 0; i &lt; n; i++)
+    v[i + 1] = E.x[i];//将最优解复制到v[1:n]
+
+while (true) &#123;//释放最小堆中所有结点
+    delete[] E.x;
+    try &#123; H.DeleteMin(E) &#125;
+    catch (OutOfBounds) break;
+&#125;
+return bestc;
 </code></pre>
-<p>1.最优子结构性质的证明：</p>
-<pre><code>……
+<p>}</p>
+<p>int main() {</p>
+<pre><code>return 0;
 </code></pre>
-<p>2.递归关系的建立：</p>
-<pre><code>……
+<p>}</p>
+<p>参考代码2：</p>
+<p>#include <iostream><br>#include <cstring><br>#include <queue><br>#include <vector><br>#define MAX 100<br>#define NoEdge -1<br>using namespace std;</p>
+<p>int n;<br>int arr[MAX][MAX];<br>int v[MAX];<br>int bestc;<br>int num &#x3D; 0;</p>
+<p>class MinHeapNode {<br>public:<br>    char name;<br>    int rcost, lcost;<br>    int cc, s;<br>    int* x;</p>
+<pre><code>MinHeapNode() &#123;
+    num++;
+&#125;
+
+bool operator&lt;(const MinHeapNode&amp; MH) const &#123;
+    return lcost &gt; MH.lcost;
+&#125;
 </code></pre>
-<p>3.代码实现，求解最优值：</p>
-<pre><code>……
+<p>};</p>
+<p>int BBTSP() {<br>    MinHeapNode E;<br>    int cc, rcost, MinSum, * MinOut, b;<br>    int i, j;<br>    MinSum &#x3D; 0;<br>    MinOut &#x3D; new int[n + 1];<br>    for (i &#x3D; 1; i &lt;&#x3D; n; i++) {<br>        MinOut[i] &#x3D; NoEdge;<br>        for (j &#x3D; 1; j &lt;&#x3D; n; j++)<br>            if (arr[i][j] !&#x3D; NoEdge &amp;&amp; (arr[i][j] &lt; MinOut[i] || MinOut[i] &#x3D;&#x3D; NoEdge))<br>                MinOut[i] &#x3D; arr[i][j];<br>        if (MinOut[i] &#x3D;&#x3D; NoEdge)<br>            return NoEdge;<br>        MinSum +&#x3D; MinOut[i];<br>    }<br>    priority_queue<MinHeapNode> prioque;<br>    E.s &#x3D; 0;<br>    E.cc &#x3D; 0;<br>    E.rcost &#x3D; MinSum;<br>    E.x &#x3D; new int[n];<br>    for (i &#x3D; 0; i &lt; n; i++)<br>        E.x[i] &#x3D; i + 1; &#x2F;&#x2F; 将节点编号加一<br>    bestc &#x3D; NoEdge;<br>    &#x2F;&#x2F;搜索排列空间树<br>    while (E.s &lt; n - 1) { &#x2F;&#x2F;非叶节点<br>        if (E.s &#x3D;&#x3D; n - 2) { &#x2F;&#x2F; 当前扩展节点是叶节点的父节点<br>            if (arr[E.x[n - 2]][E.x[n - 1]] !&#x3D; NoEdge &amp;&amp; arr[E.x[n - 1]][1] !&#x3D; NoEdge &amp;&amp;<br>                (E.cc + arr[E.x[n - 2]][E.x[n - 1]] + arr[E.x[n - 1]][1] &lt; bestc || bestc &#x3D;&#x3D; NoEdge)) {<br>                &#x2F;&#x2F;费用更小的回路<br>                bestc &#x3D; E.cc + arr[E.x[n - 2]][E.x[n - 1]] + arr[E.x[n - 1]][1];<br>                E.cc &#x3D; bestc;<br>                E.lcost &#x3D; bestc;<br>                E.s++;<br>                prioque.push(E);<br>            }<br>            else {<br>                delete[] E.x;      &#x2F;&#x2F; 舍弃扩展结点<br>            }<br>        }<br>        else { &#x2F;&#x2F; 产生当前扩展节点儿子节点<br>            for (i &#x3D; E.s + 1; i &lt; n; i++) {<br>                MinHeapNode N;<br>                if (arr[E.x[E.s]][E.x[i]] !&#x3D; NoEdge) { &#x2F;&#x2F; E.x[E.s] 是当前要扩展的父节点，E.x[i] 是被遍历的子节点<br>                    cc &#x3D; E.cc + arr[E.x[E.s]][E.x[i]];       &#x2F;&#x2F; 可行儿子节点<br>                    rcost &#x3D; E.rcost - MinOut[E.x[E.s]];<br>                    b &#x3D; cc + rcost;                          &#x2F;&#x2F; 下界<br>                    if (b &lt; bestc || bestc &#x3D;&#x3D; NoEdge)        &#x2F;&#x2F; 子树可能含最优解，节点插入最小堆<br>                    {<br>                        N.s &#x3D; E.s + 1; &#x2F;&#x2F; 进入下一层<br>                        N.cc &#x3D; cc;<br>                        N.lcost &#x3D; b;<br>                        N.rcost &#x3D; rcost;<br>                        N.x &#x3D; new int[n];<br>                        for (j &#x3D; 0; j &lt; n; j++)<br>                            N.x[j] &#x3D; E.x[j];<br>                        N.x[E.s + 1] &#x3D; E.x[i];<br>                        N.x[i] &#x3D; E.x[E.s + 1];<br>                        prioque.push(N); &#x2F;&#x2F; 加入优先队列<br>                    }<br>                }<br>            }<br>            delete[] E.x;<br>        }<br>        if (prioque.empty())<br>            break;<br>        E &#x3D; prioque.top();<br>        prioque.pop();<br>    }</p>
+<pre><code>if (bestc == NoEdge)
+    return NoEdge;
+for (i = 0; i &lt; n; i++)
+    v[i + 1] = E.x[i];
+while (prioque.size()) &#123;
+    E = prioque.top();
+    prioque.pop();
+    delete[] E.x;
+&#125;
+return bestc;
 </code></pre>
-<p>4.代码实现，构造最优解：</p>
-<pre><code>……
-</code></pre>
-<p>5.12 动态规划的一般步骤（总结）</p>
-<p>大彻大悟的部分在《算法实验》中。</p>
-<p>参考链接：……</p>
-<p>0.明确问题</p>
-<pre><code>……
-</code></pre>
-<p>1.最优子结构性质的证明：</p>
-<pre><code>可以分为直接证明和反证法，过程是相似的。
-
-直接证明：归纳法
-
-    数学归纳法
-
-反证法：
-
-    ……
-</code></pre>
-<p>2.递归关系的建立：</p>
-<pre><code>……
-</code></pre>
-<p>3.代码实现，求解最优值：</p>
-<pre><code>……
-</code></pre>
-<p>4.代码实现，构造最优解：</p>
-<pre><code>……
-</code></pre>
-<!-- 牛魔，2和3看不出区别啊 -->
-
-
-
-<!-- 1.子问题界定：
-
-    设X终止位置是i,Y的终止位置是j
-
-**2.子问题间的依赖关系：**
-
-    若Xm=Yn，那么Zk = Xm = Yn，且Zk-1为Xm-1与Yn-1的LCS。
-
-    （末尾字母相同，必包含在公共子序列内，且去掉这个末尾字母后，Zk-1肯定也是两个大序列去掉最后一个字母后的公共子序列）
-
-    若Xm≠Yn，Zk≠=Yn，则Zk为Xm与Yn-1的LCS。
-
-    （如果最后一个字母和公共子序列最后一个字母不一样，那么肯定不包括在公共子序列里的，可以直接删掉）
-
-    若Xm≠Yn，Zk≠=Xm，则Zk为Xm-1与Yn的LCS。
-
-    （同理）
-
-    至于都不相同怎么办？当然是都删掉啊
-
-    满足优化原则和子问题重叠性
-
-    （那么问题是，如何得出要从尾部开始分析的？）
-
-    但是如果单看递推方程，其实与背包问题还是挺像的。呃，但是只看结果那就是由表往里学了，只怕是越学越糊涂。
-
-    图片
-
-优化函数的递推方程……
-
-标记函数……
-
-追踪解……
-
-实例……
-
-时空复杂度……
-
-小结……
-
-个人总结：
-
-先考虑总问题（假设已经得出答案），然后考虑怎么把总问题逐步缩减到子问题，考虑缩减过程中子问题和答案的变化
-然后得到递推公式？
-
-以选择数字游戏为例
-
-设共有n个数字，最终选的起始位置为a，终止位置为b。
-
-先考虑**第一个子问题**，即往前缩一步
-
-若`1<a，b<n`，则c(n,a,b,1,n)=c(n-2,a,b,2,n-1);
-
-若`1=a，b<n`，则c(n,a,b,1,n)=c(n-1,a,b,1,n-1);
-
-若`1<a，b=n`，则c(n,a,b,1,n)=c(n-1,a,b,2,n);
-
-若`1=a，b=n`，则c(n,a,b,1,n)=c(n,a,b,1,n); （无法缩小）
-
-呃，感觉跟往前缩一步完全没关系？
-
-条件错了罢，不能用假设的条件前推
-
-我觉得不满足最优子结构……
-
-还是用老办法，先变成正负交错序列
-
-边界为负数->直接舍弃
-
-边界为正数->比较舍弃前后……？
-
-但是由于数字是连续的，这样取舍永远只能确定边界状态，而无法得知内部的情况，如何是好？
-
-c(i,j)=max(c(i-1,j),c(i,j-1))
-
-i从1到a，j从n到b。
-
-设c(n,a,b)为累加最大值
-
-若`i<a，b<j`，则c -->
-
-<hr>
-<p>修正</p>
-<p>4.27 </p>
-<pre><code>根据正课重新梳理了章节顺序
-
-增加了动态规划表相关内容
-</code></pre>
-<hr>
+<p>}</p>
+<p>int main() {<br>    cout &lt;&lt; “请输入城市数量：”;<br>    cin &gt;&gt; n;<br>    int k;<br>    memset(arr, NoEdge, sizeof(arr));<br>    cout &lt;&lt; “请输入路径数量：”;<br>    cin &gt;&gt; k;<br>    cout &lt;&lt; “请输入各路径及其长度：”;<br>    int p, q, len;<br>    for (int i &#x3D; 1; i &lt;&#x3D; k; ++i) {<br>        cin &gt;&gt; p &gt;&gt; q &gt;&gt; len;<br>        &#x2F;&#x2F; 将节点编号加一<br>        arr[p + 1][q + 1] &#x3D; len;<br>        arr[q + 1][p + 1] &#x3D; len;<br>    }<br>    int res &#x3D; BBTSP();<br>    if (res &#x3D;&#x3D; NoEdge) {<br>        cout &lt;&lt; “无法形成回路” &lt;&lt; endl;<br>    }<br>    else {<br>        cout &lt;&lt; “最短路径为：” &lt;&lt; res &lt;&lt; endl;<br>        for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>            cout &lt;&lt; v[i] - 1 &lt;&lt; “ “; &#x2F;&#x2F; 输出时将节点编号减一<br>        cout &lt;&lt; v[1] - 1; &#x2F;&#x2F; 输出时将节点编号减一<br>    }<br>    return 0;<br>}</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_79525309/article/details/134766633">https://blog.csdn.net/2301_79525309/article/details/134766633</a></p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_57443189/article/details/127760911">https://blog.csdn.net/m0_57443189/article/details/127760911</a></p>
 
   </div>
   <div>
@@ -969,8 +745,8 @@ i从1到a，j从n到b。
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://littlesharkkisskissme.github.io/2024/04/01/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%94%E7%AB%A0/">
-            https://littlesharkkisskissme.github.io/2024/04/01/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%94%E7%AB%A0/
+            href="https://littlesharkkisskissme.github.io/2024/05/20/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E5%85%AD%E7%AB%A0/">
+            https://littlesharkkisskissme.github.io/2024/05/20/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E5%85%AD%E7%AB%A0/
           </a>
         </p>
         <p><span style="font-weight: bold;"></span>如果您有不同的想法，欢迎留言交流！(<strong>@2089899731qq.com</strong>) <br>文章采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>，转载请注明出处。</p>
@@ -982,13 +758,13 @@ i从1到a，j从n到b。
   
     <div class="nav-item-prev">
       <a 
-        href="/2024/04/01/%E8%BF%8E%E6%96%B0%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%EF%BC%882%EF%BC%89/" 
+        href="/2024/05/29/%E5%A4%A7%E4%BA%8C%E4%B8%8B-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%AE%89%E6%8E%92/" 
         class="nav-link">
         <i class="iconfont icon-left nav-prev-icon"></i>
         <div>
           <div class="nav-label">上一篇</div>
           
-            <div class="nav-title">迎新平台开发（2） </div>
+            <div class="nav-title">大二下 期末考试安排 </div>
           
         </div>
       </a>
@@ -997,12 +773,12 @@ i从1到a，j从n到b。
   
     <div class="nav-item-next">
       <a 
-        href="/2024/03/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" 
+        href="/2024/05/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B-%E4%BD%9C%E4%B8%9A/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">计算机组成原理 第二章 </div>
+            <div class="nav-title">数字电路与数字逻辑B-作业 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>

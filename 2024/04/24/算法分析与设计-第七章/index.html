@@ -18,7 +18,7 @@
   <link 
     rel="icon" 
     href="/">
-  <title>算法分析与设计 第七章</title>
+  <title>算法分析与设计 第四章</title>
   <style type="text/css">
     .fullscreenvideo {
         position: absolute;
@@ -59,7 +59,7 @@
     
       <meta 
         property="og:title" 
-        content="算法分析与设计 第七章">
+        content="算法分析与设计 第四章">
     
     
       <meta 
@@ -81,7 +81,7 @@
         content="2024-04-24">
       <meta 
         property="og:article:modified_time" 
-        content="2024-05-04">
+        content="2024-06-02">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>35</span>
+    <span>38</span>
     <span>文章</span>
   </a>
   <a 
@@ -388,15 +388,21 @@
   <div class="tags-list">
     
       <a 
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
+      </a>
+    
+      <a 
         href="/tags/%E6%9D%82%E8%B0%88/" 
         title="杂谈">
         <div class="tags-list-item">杂谈</div>
       </a>
     
       <a 
-        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
-        title="文本编辑">
-        <div class="tags-list-item">文本编辑</div>
+        href="/tags/%E4%B9%A0%E9%A2%98/" 
+        title="习题">
+        <div class="tags-list-item">习题</div>
       </a>
     
       <a 
@@ -409,12 +415,6 @@
         href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
         title="数字电路与数字逻辑B">
         <div class="tags-list-item">数字电路与数字逻辑B</div>
-      </a>
-    
-      <a 
-        href="/tags/%E4%B9%A0%E9%A2%98/" 
-        title="习题">
-        <div class="tags-list-item">习题</div>
       </a>
     
       <a 
@@ -459,7 +459,7 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      算法分析与设计 第七章
+      算法分析与设计 第四章
     </h1>
   </header>
   <div class="post-meta post-show-meta">
@@ -500,9 +500,8 @@
   <div 
     id="section" 
     class="post-content">
-    <p>（最近没什么学习动力，感觉事情一多就啥都不想做。如果是要命的事情可能还会有动力，但是偏偏都是些时间弹性很大的事，唉唉）</p>
-<p>第七章 贪心算法</p>
-<p>7.1 贪心算法简介</p>
+    <p>第四章 贪心算法</p>
+<p>4.1 贪心算法简介</p>
 <p>定义：</p>
 <pre><code>贪心算法（greedy algorithm，又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择，即贪心算法并不从整体最优上加以考虑，它所得出的仅仅是在某种意义上的局部最优解。
 </code></pre>
@@ -514,7 +513,7 @@
 3.适用的问题类型。贪心算法适用于那些可以分解为独立步骤的问题，每一步的选择只依赖于当前的状态，而不需要回溯或考虑未来的步骤；动态规划则适用于那些可以分解为相互依赖的子问题的情况，其中子问题的解决方案可以被重复利用以避免重复计算。
 </code></pre>
 <p>后面将通过实例具体解释。</p>
-<p>7.2 贪心法的例子</p>
+<p>4.2 贪心法的例子</p>
 <p>活动选择问题</p>
 <pre><code>问题描述：
 
@@ -705,7 +704,7 @@
         return 0;
     &#125;
 </code></pre>
-<p>7.3 贪心算法的正确性证明</p>
+<p>4.3 贪心算法的正确性证明</p>
 <p>（看了下PPT，感觉正课不如网课）</p>
 <p>数学归纳法</p>
 <pre><code>假设F(n-1)满足目标假设，用F(n-1)证明F(n)，同时证明F(1)也满足目标假设。即可证明假设成立
@@ -758,7 +757,7 @@
 </code></pre>
 <p>……</p>
 <p>（<strong>实际上，贪心算法求的往往是近似解而非最优解。因为贪心算法每次都会选择当前看起来最好的选择，但可能因为这种选择并不是最优的，导致最终结果不一定是全局最优的解。所以实际应用中，它只要能求近似解就行了，没必要纠结最优解怎么来的</strong>）</p>
-<p>7.4 最优装载问题</p>
+<p>4.4 最优装载问题</p>
 <p>问题：n 个集装箱1, 2, … , n 装上轮船，集装箱 i 的重量 wi , 轮船装载重量限制为C, 无体积限制。问如何装使得上船的集装箱最多？不妨设每个箱子的重量 wi ≤ C。</p>
 <p>（实际就是每种集装箱只有1个，要在满足限重的情况下装载尽可能多的箱子）</p>
 <p>（相当于0-1背包问题）</p>
@@ -829,7 +828,7 @@
         <div>
           <div class="nav-label">上一篇</div>
           
-            <div class="nav-title">算法分析与设计 第二章 </div>
+            <div class="nav-title">算法分析与设计 第一章 </div>
           
         </div>
       </a>
@@ -890,23 +889,23 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-06-02</div>
+        <a href="/2024/06/02/%E6%96%B0%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><div class="recent-posts-item-content">新算法分析与设计 动态规划</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-06-02</div>
+        <a href="/2024/06/02/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">算法设计与分析 第五章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-06-02</div>
+        <a href="/2024/06/02/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%8C%E7%AB%A0-1/"><div class="recent-posts-item-content">算法分析与设计 第二章</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2024-05-29</div>
         <a href="/2024/05/29/%E5%A4%A7%E4%BA%8C%E4%B8%8B-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%AE%89%E6%8E%92/"><div class="recent-posts-item-content">大二下 期末考试安排</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-05-20</div>
-        <a href="/2024/05/20/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E5%AE%9E%E9%AA%8C%E5%85%AD/"><div class="recent-posts-item-content">算法设计与分析 实验六</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-05-11</div>
-        <a href="/2024/05/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%80%BB%E8%BE%91B-%E4%BD%9C%E4%B8%9A/"><div class="recent-posts-item-content">数字电路与逻辑B-作业</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-05-06</div>
-        <a href="/2024/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">计算机组成原理 第五章</div></a>
       </div>
     
   </div>

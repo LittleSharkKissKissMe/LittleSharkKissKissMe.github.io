@@ -81,7 +81,7 @@
         content="2024-06-02">
       <meta 
         property="og:article:modified_time" 
-        content="2024-06-03">
+        content="2024-06-04">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -390,33 +390,21 @@
       </a>
     
       <a 
-        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
-        title="文本编辑">
-        <div class="tags-list-item">文本编辑</div>
-      </a>
-    
-      <a 
-        href="/tags/%E7%AE%97%E6%B3%95/" 
-        title="算法">
-        <div class="tags-list-item">算法</div>
-      </a>
-    
-      <a 
-        href="/tags/%E4%B9%A0%E9%A2%98/" 
-        title="习题">
-        <div class="tags-list-item">习题</div>
-      </a>
-    
-      <a 
-        href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
-        title="数字电路与数字逻辑B">
-        <div class="tags-list-item">数字电路与数字逻辑B</div>
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
+        title="服务外包">
+        <div class="tags-list-item">服务外包</div>
       </a>
     
       <a 
         href="/tags/%E8%AF%BE%E7%A8%8B/" 
         title="课程">
         <div class="tags-list-item">课程</div>
+      </a>
+    
+      <a 
+        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
+        title="计算机组成原理">
+        <div class="tags-list-item">计算机组成原理</div>
       </a>
     
       <a 
@@ -432,15 +420,27 @@
       </a>
     
       <a 
-        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
-        title="计算机组成原理">
-        <div class="tags-list-item">计算机组成原理</div>
+        href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
+        title="数字电路与数字逻辑B">
+        <div class="tags-list-item">数字电路与数字逻辑B</div>
       </a>
     
       <a 
-        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
-        title="服务外包">
-        <div class="tags-list-item">服务外包</div>
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%B9%A0%E9%A2%98/" 
+        title="习题">
+        <div class="tags-list-item">习题</div>
       </a>
     
   </div>
@@ -469,7 +469,7 @@
     
     
       <span class="dot"></span>
-      <span>2.9k 字</span>
+      <span>3.1k 字</span>
     
   </div>
   
@@ -808,31 +808,41 @@ void Traceback( int i, int j, int **s)&#123;
 
         其实只要搞清楚i和j的含义，表格可以现场手搓的（
 
+    改进分析：
+
+        有点小难，后面再看
+
 4.最优二叉搜索树
 
     基础知识：
 
+        （这不是我们高中信息技术的梗吗，下次引用记得标明出处）
 
+        对分查找中的二叉树实际上是二叉搜索树的一个特例
 
     问题描述：
 
+        对于每个查找值，有一个对应的查找概率，目标是构造一颗二叉搜索树，使得期望的搜索次数最小
 
+        这个目标也可以理解为带权路径和最小、哈夫曼编码
 
     最优子结构？
 
-
+        左子树和右子树均是最优二叉搜索树即可
 
     递推结构？
 
+        w[i, j]是P[i,j]中所有概率（包括数据元素与空隙）之和。
 
+        m[i,j] = min&#123;m[i,k-1] + m[k+1,j] + w[i,j]&#125;    (1 &lt;= i &lt;= j &lt;= n)
+
+        m[i,i-1] = 0    (1 &lt;= i &lt;= n)
 
     最优值代码？
 
 
 
     最优解代码？
-
-        
 </code></pre>
 
   </div>

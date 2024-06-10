@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="</html>zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="LittleSharkKissKissMe">
+  <link 
+    rel="icon" 
+    href="/">
+  <title>新算法设计与分析 贪心算法</title>
+  <style type="text/css">
+    .fullscreenvideo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        -webkit-transition: 1s opacity;
+        transition: 1s opacity;
+    }
+     
+    .videocontainer{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -100; 
+    }
+     
+    .videocontainer:before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0);
+    }
+  </style>
+  
+    
+      <meta 
+        property="og:title" 
+        content="新算法设计与分析 贪心算法">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://littlesharkkisskissme.github.io/2024/06/05/%E6%96%B0%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/images/Gus.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2024-06-05">
+      <meta 
+        property="og:article:modified_time" 
+        content="2024-06-09">
+      <meta 
+        property="og:article:author" 
+        content="风月无霰">
+      
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+
+      <div class="videocontainer">
+        <video class="fullscreenvideo" playsinline="" autoplay="" muted="" loop="">
+        <source src="../source/images/fate.mp4" type="video/mp4"><!-- 在这改路径即可直接食用 -->
+        </video>
+      </div>
+   
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+      <span class="navbar-logo-dsc">轻泊</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/images/Gus.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">风月无霰</p>
+<p class="author-description"></p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>42</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>0</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>10</span>
+    <span>标签</span>
+  </a>
+</div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E6%9D%82%E8%B0%88/" 
+        title="杂谈">
+        <div class="tags-list-item">杂谈</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
+        title="数字电路与数字逻辑B">
+        <div class="tags-list-item">数字电路与数字逻辑B</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%B9%A0%E9%A2%98/" 
+        title="习题">
+        <div class="tags-list-item">习题</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/%E8%AF%BE%E7%A8%8B/" 
+        title="课程">
+        <div class="tags-list-item">课程</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" 
+        title="算法设计与分析">
+        <div class="tags-list-item">算法设计与分析</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
+        title="算法分析与设计">
+        <div class="tags-list-item">算法分析与设计</div>
+      </a>
+    
+      <a 
+        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
+        title="计算机组成原理">
+        <div class="tags-list-item">计算机组成原理</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
+        title="服务外包">
+        <div class="tags-list-item">服务外包</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      新算法设计与分析 贪心算法
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2024-06-05T13:02:14.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2024-06-05</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>1.8k 字</span>
+    
+  </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>从代码的角度，全局地分析贪心算法问题。</p>
+<p>贪心算法基本思想：不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解。需要注意与动态规划区分，贪心算法采取的是<strong>自顶向下</strong>的策略。</p>
+<p>一、共性步骤</p>
+<pre><code>用贪心法解决问题之前，同样要确保问题具有最优子结构，并且还需要确保问题有**贪心选择性质**
+
+贪心选择性质：指所求问题的整体最优解可以通过一系列局部最优的选择(即贪心选择)来求解出。这是贪心算法与动态规划算法的主要区别。
+
+另外，值得注意的是，贪心算法采取的是**自顶向下**的策略，与动态规划恰好相反
+
+（感觉贪心法比动态规划简单得多）
+</code></pre>
+<p>二、构想通用代码</p>
+<pre><code>以活动安排问题为例。
+
+问题描述：
+
+    设有n个活动的集合E=&#123;1, 2, …, n&#125;，其中每个活动都要求使用同一资源，如演讲会场等，而在同一时间内只有一个活动能使用这一资源。
+
+    每个活动i要求使用该资源的起始时间为si，结束时间fi , 且si &lt; fi 。如果选择了活动i，则它在半开时间区间[si, fi)内占用资源。
+
+    每个活动之间不能发生冲突。
+
+示例代码：
+
+    template&lt;class Type&gt;
+    void GreedyActivitySelector(int n, Type s[], Type f[], bool A[])&#123;
+    //令数组s和f分别存储了各活动的起始时间和结束时间，其中f数组是按活动结束的非减序排序的，即：f1 &lt;= f2 &lt;= … &lt;= fn
+
+        A[1]=true;
+        //数组A[i]判断活动是否选择，true为选中，false为不选
+
+        int j=1;
+
+        for (int i=2;i&lt;=n;i++) &#123;
+
+            if (s[i]&gt;=f[j]) &#123; 
+                A[i]=true; j=i; 
+                //只要时间不冲突，就选中该活动，并以该活动为标准，筛选下一个活动
+
+            &#125;else 
+                A[i]=false;
+        &#125;
+    &#125;
+
+代码分析：
+
+    其实代码非常简单，问题是**以什么作为贪心算法的判断依据**
+
+    由于输入的活动以其完成时间的非减序排列，所以算法每次总是选择具有最早完成时间的相容活动加入集合A中。实际意义是使**剩余的可安排时间段极大化**，以便安排尽可能多的相容活动
+
+    时间复杂度非常简单，就是θ(n)。如果输入的活动没有非减序排序，自行排序也只需要O(nlogn)的时间复杂度
+
+正确性证明
+
+    ……
+</code></pre>
+<p>三、实战演练</p>
+<pre><code>接下来给出其他贪心算法的例子。
+
+1.散装背包问题
+
+    问题描述：
+    
+        给定n种物品和一个背包。物品i的重量是wi，其价值为vi，背包的容量为c。物品i可以部分装入背包，那么如何选择装入背包的物品，使得装入背包中物品的总价值最大?
+
+    贪心策略：
+
+        计算每种物品单位重量的价值vi/wi；
+
+        依贪心选择策略，将尽可能多的单位重量价值最高的物品装入背包。
+
+    示例代码：
+
+        //比较简单，不做解析了
+
+        void FractionalKnapsack(int n, float M, float v[],float w[],float x[])&#123;
+
+            Sort(n, v, w); //按vi/wi进行排序
+
+            int i;
+
+            for (i=1; i&lt;=n; i++) 
+                x[i]=0;
+
+            float c=M;
+
+            for (i=1; i&lt;=n; i++) &#123;
+
+                if (w[i]&gt;c) break;
+
+                x[i]=1;
+
+                c-=w[i];
+
+            &#125;
+
+            if (i&lt;=n) x[i]=c/w[i];
+        &#125;
+
+    其他分析：
+
+        时间复杂度取决于排序，仍然为O(nlogn)
+
+        贪心算法不能求得0-1背包问题的最优解，因为它无法保证尽量将背包装满，部分闲置的背包空间会使每公斤背包空间的价值降低了
+
+        动态规划算法也可以用于求解散装背包问题，但是效率要比贪心算法低的多。
+
+2.最优装载
+
+    问题描述：
+
+        有一批集装箱要装上一艘载重量为c的轮船。其中集装箱i的重量为Wi。最优装载问题要求确定在装载体积不受限制的情况下，将尽可能多的集装箱装上轮船
+
+        注意区分与0-1背包问题的区别：
+
+            目标不同。0-1背包要选价值最高的策略，而最优装载只要装的集装箱最多就行
+
+    贪心策略：
+
+        优先装最轻的集装箱
+
+    示例代码：
+
+        template&lt;class Type&gt;
+        void Loading(int x[],  Type w[], Type c, int n)&#123;
+                int *t = new int [n+1];
+                Sort(w, t, n); //t表示排序后的集装箱数组
+                for (int i = 1; i &lt;= n; i++) x[i] = 0;
+                for (int i = 1; i &lt;= n &amp;&amp; w[t[i]] &lt;= c; i++) &#123;
+                    x[t[i]] = 1; c -= w[t[i]];
+                &#125;
+        &#125;
+
+    其他分析：
+
+        ……
+
+3.哈夫曼编码
+
+    问题描述：
+
+        ……
+
+    贪心策略：
+
+        每次选择两个频率最小的节点合并，直到所有节点合并为一棵树
+
+    示例代码：
+
+        template &lt;class T&gt;     
+        BinaryTree&lt;int&gt; HuffmanTree(T a[], int n) &#123;     
+            //根据权重数组a[1-&gt;n] 构造Huffman树     
+            //创建一个单节点树的数组     
+            Huffman&lt;T&gt; *w = new Huffman&lt;T&gt; [n+1];     
+            BinaryTree&lt;int&gt; z, zero;
+
+            for (int i = 1; i &lt;= n; i++)&#123;     
+                z.MakeTree(i, zero, zero);     
+                w[i].weight = a[i];     
+                w[i].tree = z;     
+            &#125;
+
+            //将堆中的树不断合并     
+            Huffman&lt;T&gt; x, y;
+
+            for (int i = 1; i &lt; n; i++)&#123;     
+                H.DeleteMin(x);//删除最小频率的   
+                H.DeleteMin(y);//删除次小频率的
+                z.MakeTree(0, x.tree, y.tree);     
+                x.weight += y.weight; x.tree = z;     
+                H.Insert(x);     
+            &#125;
+
+            H.DeleteMin(x); //得到Huffman树     
+            H.Deactivate();   
+            delete [] w;     
+            return x.tree;     
+        &#125; 
+
+    其他分析：
+
+        时间复杂度：O(nlogn)
+
+4.单源最短路径
+
+    问题描述：
+
+        给定带权有向图G =(V, E)，其中每条边的权(Weight)是非负实数。另外，还给定V中的一个顶点，称为源(Source)。现在要计算从源到所有其它各顶点的最短路径长度。路径长度是指路上各边权之和。
+
+        （其实也就是计算一个点到其他点的最短路径长度）
+
+    贪心策略：
+
+        Dijkstra算法
+
+        先把起点直接能抵达的地方距离记录，然后把最近的点加入起点，两个点看成一个整体，重复上述步骤
+
+        （这不是我们最小生成树的梗吗，下次引用记得标明出处）
+
+    示例代码：
+
+        ……
+
+    其他分析：
+
+        ……
+
+5.最小生成树
+
+    问题描述：
+
+        陈年烂梗
+
+        ……
+
+    贪心策略：
+
+        ……
+
+    示例代码：
+
+        ……
+
+    其他分析：
+
+        ……
+
+6.多机调度问题
+
+    问题描述：
+
+        目标：要求给出一种作业调度方案，使所给的n个作业在尽可能短的时间内由m台机器加工处理完成。
+
+        约束：每个作业均可在任何一台机器上加工处理，但未完工前不允许中断处理。作业不能拆分成更小的子作业。
+
+        （没给代码啊，PPT也只有几页，应该不重要吧）
+
+    贪心策略：
+
+        ……
+
+    示例代码：
+
+        ……
+
+    其他分析：
+
+        ……
+</code></pre>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-warning copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            风月无霰
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://littlesharkkisskissme.github.io/2024/06/05/%E6%96%B0%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+            https://littlesharkkisskissme.github.io/2024/06/05/%E6%96%B0%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;"></span>如果您有不同的想法，欢迎留言交流！(<strong>@2089899731qq.com</strong>) <br>文章采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>，转载请注明出处。</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2024/06/09/%E6%96%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">新数字电路与数字逻辑B </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2024/06/02/%E6%96%B0%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">新算法分析与设计 动态规划 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-06-10</div>
+        <a href="/2024/06/10/%E6%96%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"><div class="recent-posts-item-content">新计算机组成原理</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-06-09</div>
+        <a href="/2024/06/09/%E6%96%B0%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E5%9B%9E%E6%BA%AF%E6%B3%95/"><div class="recent-posts-item-content">新算法设计与分析 回溯法</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-06-09</div>
+        <a href="/2024/06/09/%E6%96%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/"><div class="recent-posts-item-content">新数字电路与数字逻辑B</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-06-05</div>
+        <a href="/2024/06/05/%E6%96%B0%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"><div class="recent-posts-item-content">新算法设计与分析 贪心算法</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2024
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          轻泊
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+  </body>
+</html>

@@ -81,7 +81,7 @@
         content="2024-04-01">
       <meta 
         property="og:article:modified_time" 
-        content="2024-06-02">
+        content="2024-06-05">
       <meta 
         property="og:article:author" 
         content="风月无霰">
@@ -329,7 +329,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>38</span>
+    <span>42</span>
     <span>文章</span>
   </a>
   <a 
@@ -394,33 +394,9 @@
       </a>
     
       <a 
-        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
-        title="服务外包">
-        <div class="tags-list-item">服务外包</div>
-      </a>
-    
-      <a 
-        href="/tags/%E8%AF%BE%E7%A8%8B/" 
-        title="课程">
-        <div class="tags-list-item">课程</div>
-      </a>
-    
-      <a 
-        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
-        title="计算机组成原理">
-        <div class="tags-list-item">计算机组成原理</div>
-      </a>
-    
-      <a 
-        href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
-        title="算法分析与设计">
-        <div class="tags-list-item">算法分析与设计</div>
-      </a>
-    
-      <a 
-        href="/tags/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" 
-        title="算法设计与分析">
-        <div class="tags-list-item">算法设计与分析</div>
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
       </a>
     
       <a 
@@ -430,21 +406,45 @@
       </a>
     
       <a 
+        href="/tags/%E4%B9%A0%E9%A2%98/" 
+        title="习题">
+        <div class="tags-list-item">习题</div>
+      </a>
+    
+      <a 
         href="/tags/%E7%AE%97%E6%B3%95/" 
         title="算法">
         <div class="tags-list-item">算法</div>
       </a>
     
       <a 
-        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
-        title="文本编辑">
-        <div class="tags-list-item">文本编辑</div>
+        href="/tags/%E8%AF%BE%E7%A8%8B/" 
+        title="课程">
+        <div class="tags-list-item">课程</div>
       </a>
     
       <a 
-        href="/tags/%E4%B9%A0%E9%A2%98/" 
-        title="习题">
-        <div class="tags-list-item">习题</div>
+        href="/tags/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" 
+        title="算法设计与分析">
+        <div class="tags-list-item">算法设计与分析</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
+        title="算法分析与设计">
+        <div class="tags-list-item">算法分析与设计</div>
+      </a>
+    
+      <a 
+        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
+        title="计算机组成原理">
+        <div class="tags-list-item">计算机组成原理</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
+        title="服务外包">
+        <div class="tags-list-item">服务外包</div>
       </a>
     
   </div>
@@ -473,7 +473,7 @@
     
     
       <span class="dot"></span>
-      <span>3.7k 字</span>
+      <span>4.2k 字</span>
     
   </div>
   
@@ -820,42 +820,86 @@ m(n,j) = vn，j ≥ wn
 通过这种方式构建的二叉搜索树可以最大限度地降低搜索操作的成本。
 </code></pre>
 <p>1.最优子结构性质的证明：</p>
-<pre><code>……
+<pre><code>参考链接：https://blog.csdn.net/m15253053181/article/details/128895617
+
+记X出现在X[i]中的概率为b[i]，在空隙（Xi, Xi+1）中的概率为a[i]，得到S的存取概率分布为P = &lt;a0, b1, a1, b2, a2, ……, bn, an&gt;
+
+规定树根为第0层，结点Xi在T中的深度是d(Xi), 空隙Lj的深度为d(Lj), 其中1 &lt;= i &lt;= n
+
+**平均比较次数**为：m(T) = bi*(1 + d(Xi))(i=1到n求和) +  ai*(d(Lj))(j=1到n求和)
+
+（以上是基础知识）
 </code></pre>
 <p>2.递归关系的建立：</p>
-<pre><code>……
+<pre><code>如果我们把每个子树当成一个节点，则根据平均比较次数的算式，有：
+
+w[i,j] = ap(p=i-1, 递增j个求和) + bq(q=i, 递增j个求和)
+
+w[i,j]表示Xi到Xj之间的所有数据和空隙概率之和
+
+设m[i,j]是最优二叉搜索树的平均比较次数
+
+则有递推方程：
+
+    m[i,j] = min&#123;m[i,k-1] + m[k+1,j] + w[i,j]&#125; , (1 &lt;= i &lt;= j &lt;= n) 
+
+    m[i,i-1] = 0 , (1 &lt;= i &lt;= n)
+
+也就是挨个查找，找到最优的k值
+
+对于给定的数据x，需要先与根Xk进行比较后才可以进入到左子树或右子树；而由于使用根Xk将左子树和右子树连接起来，子树的每个结点高度均增加了一层，所以在比较次数上也要加1，所以w[i, j]是由增加的左子树的比较次数、增加的右子树的比较次数、和根的比较次数之和
+
+(关于w[i,j]为什么既是概率又是比较次数，参考链接中有给出证明，不用纠结)
 </code></pre>
-<p>3.代码实现，求解最优值：</p>
-<pre><code>……
+<p>3.代码实现，求解最优值：(这部分没细看，需要后面补充)</p>
+<pre><code>void OptimalBinarySearchTree( int a, int b, int n, int **m, int **s, int **w) &#123;
+
+    for (int i = 0; i &lt; n; i++) &#123;  
+        w[i+1][i] = a[i];   
+        m[i+1][i] = 0;  
+    &#125;
+    //初始化
+
+    for (int r = 0; r &lt; n; r++) &#123;
+    //这里的r循环是何意？又一个矩阵连乘？
+
+        for (int i = 1; i &lt;= n-r; i++) &#123;
+
+            int j = i+r;
+
+            w[i][j] = w[i][j-1] + a[j] +b[j];
+
+            m[i][j] = m[i+1][j];  s[i][j] = i;
+
+            for (int k =i + 1; k &lt;= j; k++) &#123;
+
+                int t = m[i][k-1] + m[k+1][j];
+
+                if (t &lt; m[i][j]) &#123;
+
+                    m[i][j] = t;  
+                    s[i][j] = k; 
+                &#125; 
+            &#125;
+
+            m[i][j]+=w[i][j]; 
+        &#125; 
+    &#125; 
+&#125;
 </code></pre>
 <p>4.代码实现，构造最优解：</p>
-<pre><code>……
-</code></pre>
-<p>5.12 动态规划的一般步骤（总结）</p>
-<p>大彻大悟的部分在《算法实验》中。</p>
-<p>参考链接：……</p>
-<p>0.明确问题</p>
-<pre><code>……
-</code></pre>
-<p>1.最优子结构性质的证明：</p>
-<pre><code>可以分为直接证明和反证法，过程是相似的。
+<pre><code>依据s[i][j]可追溯构造最优解。
 
-直接证明：归纳法
-
-    数学归纳法
-
-反证法：
-
-    ……
+……
 </code></pre>
-<p>2.递归关系的建立：</p>
-<pre><code>……
-</code></pre>
-<p>3.代码实现，求解最优值：</p>
-<pre><code>……
-</code></pre>
-<p>4.代码实现，构造最优解：</p>
-<pre><code>……
+<p>3.12 动态规划的一般步骤（总结）</p>
+<pre><code>（《算法实验》中有额外的补充说明）
+
+参考链接：
+
+……
+
+自此，动态规划一轮复习落下帷幕
 </code></pre>
 <!-- 牛魔，2和3看不出区别啊 -->
 
@@ -1049,23 +1093,23 @@ i从1到a，j从n到b。
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-06-02</div>
-        <a href="/2024/06/02/%E6%96%B0%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><div class="recent-posts-item-content">新算法分析与设计 动态规划</div></a>
+        <div class="recent-posts-item-title">2024-06-10</div>
+        <a href="/2024/06/10/%E6%96%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"><div class="recent-posts-item-content">新计算机组成原理</div></a>
       </div>
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-06-02</div>
-        <a href="/2024/06/02/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%BA%94%E7%AB%A0/"><div class="recent-posts-item-content">算法设计与分析 第五章</div></a>
+        <div class="recent-posts-item-title">2024-06-09</div>
+        <a href="/2024/06/09/%E6%96%B0%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E5%9B%9E%E6%BA%AF%E6%B3%95/"><div class="recent-posts-item-content">新算法设计与分析 回溯法</div></a>
       </div>
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-06-02</div>
-        <a href="/2024/06/02/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%BA%8C%E7%AB%A0-1/"><div class="recent-posts-item-content">算法分析与设计 第二章</div></a>
+        <div class="recent-posts-item-title">2024-06-09</div>
+        <a href="/2024/06/09/%E6%96%B0%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/"><div class="recent-posts-item-content">新数字电路与数字逻辑B</div></a>
       </div>
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2024-05-29</div>
-        <a href="/2024/05/29/%E5%A4%A7%E4%BA%8C%E4%B8%8B-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%AE%89%E6%8E%92/"><div class="recent-posts-item-content">大二下 期末考试安排</div></a>
+        <div class="recent-posts-item-title">2024-06-05</div>
+        <a href="/2024/06/05/%E6%96%B0%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"><div class="recent-posts-item-content">新算法设计与分析 贪心算法</div></a>
       </div>
     
   </div>

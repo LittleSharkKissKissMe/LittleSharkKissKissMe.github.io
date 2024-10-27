@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="</html>zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="LittleSharkKissKissMe">
+  <link 
+    rel="icon" 
+    href="/">
+  <title>心理学入门基础-笔记</title>
+  <style type="text/css">
+    .fullscreenvideo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        -webkit-transition: 1s opacity;
+        transition: 1s opacity;
+    }
+     
+    .videocontainer{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -100; 
+    }
+     
+    .videocontainer:before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0);
+    }
+  </style>
+  
+    
+      <meta 
+        property="og:title" 
+        content="心理学入门基础-笔记">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://littlesharkkisskissme.github.io/2024/07/07/%E5%BF%83%E7%90%86%E5%AD%A6%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/images/Gus.jpg">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2024-07-07">
+      <meta 
+        property="og:article:modified_time" 
+        content="2024-07-11">
+      <meta 
+        property="og:article:author" 
+        content="风月无霰">
+      
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+
+      <div class="videocontainer">
+        <video class="fullscreenvideo" playsinline="" autoplay="" muted="" loop="">
+        <source src="../source/images/fate.mp4" type="video/mp4"><!-- 在这改路径即可直接食用 -->
+        </video>
+      </div>
+   
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+      <span class="navbar-logo-dsc">轻泊</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/images/Gus.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">风月无霰</p>
+<p class="author-description"></p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>50</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>0</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>11</span>
+    <span>标签</span>
+  </a>
+</div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" 
+        title="算法设计与分析">
+        <div class="tags-list-item">算法设计与分析</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9D%82%E8%B0%88/" 
+        title="杂谈">
+        <div class="tags-list-item">杂谈</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85/" 
+        title="服务外包">
+        <div class="tags-list-item">服务外包</div>
+      </a>
+    
+      <a 
+        href="/tags/%E8%AF%BE%E7%A8%8B/" 
+        title="课程">
+        <div class="tags-list-item">课程</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91B/" 
+        title="数字电路与数字逻辑B">
+        <div class="tags-list-item">数字电路与数字逻辑B</div>
+      </a>
+    
+      <a 
+        href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" 
+        title="计算机组成原理">
+        <div class="tags-list-item">计算机组成原理</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" 
+        title="算法分析与设计">
+        <div class="tags-list-item">算法分析与设计</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%AE%97%E6%B3%95/" 
+        title="算法">
+        <div class="tags-list-item">算法</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" 
+        title="文本编辑">
+        <div class="tags-list-item">文本编辑</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%B9%A0%E9%A2%98/" 
+        title="习题">
+        <div class="tags-list-item">习题</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9F%B3%E4%B9%90/" 
+        title="音乐">
+        <div class="tags-list-item">音乐</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      心理学入门基础-笔记
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2024-07-07T07:58:08.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2024-07-07</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>2.2k 字</span>
+    
+  </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>书名</p>
+<p>作者</p>
+<p>出版社</p>
+<p>第一堂课</p>
+<p>一、弗洛伊德之“欲望”</p>
+<pre><code>弗洛伊德主张大部分被压抑的欲望属于性的范畴。他将心理分为三部分：本我、自我和超我
+
+本我为最原始的欲望需求，超我为社会道德伦理生成的良知，自我介于两者之间
+
+人是拥有丰富欲望的群体，但是欲望并非都能得到满足，因此需要战胜自己的欲望
+
+
+见三
+</code></pre>
+<!-- 二、梦的产生
+
+    做梦是正常的、必不可少的
+    
+    梦能帮助人们排除意识体系无法接受的愿望和欲望
+
+
+    无 -->
+
+<p>三、心理变态的产生因素</p>
+<pre><code>原因：内心需要与欲望满足没有平衡
+
+因此不能一味压抑欲望
+
+
+
+解决方案：接受客观事实，降低预期，寻找替代方案，培养积极心态
+</code></pre>
+<p>四、如何克制欲望，不做欲望的奴隶</p>
+<pre><code>善于自律，可以约束自己
+</code></pre>
+<p>五、身心健康依赖于自我控制</p>
+<pre><code>控制自己的食欲？
+
+
+
+身体问题：缺少运动、熬夜、大∩、饮食不规律
+
+解决方案：
+</code></pre>
+<p>六、不要陷进欲望的漩涡</p>
+<pre><code>不要过于追求外界的缤纷多彩，而是要学会自控，充实自己的内心
+
+
+
+本质还是属于战胜欲望，所谓“存天理，灭人欲”
+</code></pre>
+<p>第二堂课</p>
+<pre><code>……
+</code></pre>
+<p>九型人格测试</p>
+<pre><code>浪漫型人格
+</code></pre>
+<p>……</p>
+<p>尚未明确的问题：我明白书中的心理学基础知识是想让我运用自己所学，去弥补去修复自己的心理问题，但我还是不明白我该如何看待施加心理伤害的人。</p>
+<p>事实上心理学体系有很多，或许我还是应该遵循最初的想法，为我自己做一套适合的体系？</p>
+<p>平衡情绪驱动和冷静分析：</p>
+<pre><code>这是一个很好的问题，关于情绪管理和行动动力之间的平衡。首先，我想说的是，情绪是我们人类体验的重要组成部分，它们能够激发我们的动力和热情，推动我们去做一些事情。然而，如果情绪过于强烈或不稳定，就可能会对我们的决策和行动产生负面影响。
+
+对于你提到的情况，我建议你尝试以下方法来平衡情绪驱动和冷静分析：
+
+情绪识别与接纳：首先，要学会识别和接纳自己的情绪。当你感到愤怒或受到激励时，不要急于行动，而是先停下来，深呼吸，感受自己的情绪。这有助于你更清晰地认识到自己的情绪状态，并为后续的决策做好准备。
+
+情绪引导与转化：在识别并接纳自己的情绪后，尝试将情绪转化为积极的动力。例如，当你因为被别人看不起而愤怒时，可以将这种愤怒转化为提升自己、证明自己的动力。但是，要注意不要让情绪完全控制你的行为，而是要在情绪的引导下，做出更加理性和有效的决策。
+
+冷静分析与规划：在情绪得到一定的引导和转化后，尝试用更冷静的视角去分析问题。思考一下你的目标是什么？你的行动是否有助于实现这个目标？有没有更好的方式去做这件事情？通过冷静的分析和规划，你可以更好地掌握自己的行动方向，避免因为冲动而做出错误的决策。
+
+情绪智能的培养：最后，我想强调的是情绪智能的重要性。情绪智能是指我们识别、理解、表达和调节自己及他人情绪的能力。通过培养情绪智能，你可以更好地管理自己的情绪，使自己的情绪更加稳定、积极和有益。这不仅可以提高你的生活质量，还可以增强你的社会适应能力和人际关系。
+
+总之，情绪驱动和冷静分析并不是对立的，而是可以相互补充的。你可以根据自己的特点和情况，找到适合自己的平衡点，既能够充分利用情绪的动力，又能够保持冷静和理性。
+</code></pre>
+<p>也就是说，我先识别自己的情绪，假如我的情绪是完全合理的，那么它使我下定决心去做某件事，但在执行的过程中，我将用冷静的思维方式。</p>
+<p>对于没有热情的任务，比如工作，确实需要一些策略来给自己找到合适的动力。以下是一些建议，希望能帮助你：</p>
+<pre><code>设定明确的目标：为你的工作设定清晰、可量化的目标。这些目标可以是短期的（如完成某个项目）或长期的（如晋升到某个职位）。明确的目标可以让你看到努力的方向，从而更有动力去执行。
+
+寻找任务的意义：尝试思考并发现你所从事工作的深层意义和价值。它可能是为公司或组织做出贡献，也可能是实现个人成长和学习。找到这些意义点，可以激发你的内在动力，让你更加投入地工作。
+
+将大任务分解为小目标：面对庞大的工作任务时，可能会感到无从下手或失去动力。这时，你可以尝试将大任务分解为一系列小目标或步骤。每完成一个小目标，都会给你带来成就感，从而激励你继续前行。
+
+建立奖励机制：为自己设定一些奖励，以激励自己完成工作任务。这些奖励可以是物质上的（如购买心仪的物品），也可以是精神上的（如看一场电影、与朋友聚会等）。奖励机制可以激发你的积极性，让你更加愿意投入时间和精力去工作。
+
+寻求支持与反馈：与同事、朋友或家人分享你的工作困扰和挑战，并寻求他们的支持和鼓励。同时，也可以主动向上级或同事寻求反馈，了解自己的工作表现和改进方向。这些支持和反馈可以让你感受到自己的价值和进步，从而更有动力去工作。
+
+探索内在动机：除了外部奖励和支持外，更重要的是要探索自己的内在动机。思考一下你为什么选择这份工作？你的兴趣和价值观是什么？通过深入了解自己的内在动机，你可以找到更加持久和强大的动力源泉。
+</code></pre>
+<p>孤僻性格确实在很多人眼中可能被视为不太理想的心理状态，因为它可能限制了你的社交活动和人际关系的建立。然而，我们也需要理解，每个人的性格都是复杂且独特的，而孤僻可能只是你性格中的一个方面，它并不一定全是负面的。</p>
+<p>首先，孤僻性格可能让你有更多的时间独处，这有助于你深入思考、自我反省和创造力的发展。同时，它也可能让你在喧嚣的世界中保持一份宁静和独立。</p>
+<p>然而，孤僻也可能带来一些挑战，比如可能导致孤独感、社交焦虑或难以建立亲密关系。如果你感到这些方面对你的生活产生了负面影响，那么可能需要考虑做出一些改变。</p>
+<p>关于是否应该改正孤僻性格，这完全取决于你自己的感受和需要。如果你觉得孤僻并没有对你的生活造成太大的困扰，那么你可以继续保持这种性格。但如果你感到孤独、渴望更多的社交和人际关系，那么你可以尝试逐渐打开心扉，与他人建立联系。</p>
+<p>在尝试改变的过程中，我建议你先从小事做起，比如参加一些社交活动、与老朋友保持联系或尝试新的爱好来结交新朋友。同时，也要学会接纳自己的性格特点，不要过于苛求自己变得完全外向或合群。</p>
+<p>最重要的是，无论你选择保持孤僻还是尝试改变，都要记得关注自己的心理健康和幸福感。如果你感到困惑或无法独自应对，不妨寻求专业的心理咨询帮助。</p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-warning copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            风月无霰
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://littlesharkkisskissme.github.io/2024/07/07/%E5%BF%83%E7%90%86%E5%AD%A6%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/">
+            https://littlesharkkisskissme.github.io/2024/07/07/%E5%BF%83%E7%90%86%E5%AD%A6%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;"></span>如果您有不同的想法，欢迎留言交流！(<strong>@2089899731qq.com</strong>) <br>文章采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>，转载请注明出处。</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2024/08/03/PCB%E8%AE%BE%E8%AE%A1/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">PCB设计 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2024/07/01/%E6%9C%BA%E6%A2%B0%E8%87%82%E8%AE%BE%E8%AE%A1/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">机械臂设计 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-10-27</div>
+        <a href="/2024/10/27/%E5%8F%A3%E7%90%B4/"><div class="recent-posts-item-content">口琴</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-08-03</div>
+        <a href="/2024/08/03/PCB%E8%AE%BE%E8%AE%A1/"><div class="recent-posts-item-content">PCB设计</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-07-07</div>
+        <a href="/2024/07/07/%E5%BF%83%E7%90%86%E5%AD%A6%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/"><div class="recent-posts-item-content">心理学入门基础-笔记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2024-07-01</div>
+        <a href="/2024/07/01/%E6%9C%BA%E6%A2%B0%E8%87%82%E8%AE%BE%E8%AE%A1/"><div class="recent-posts-item-content">机械臂设计</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2024
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          轻泊
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+  </body>
+</html>
